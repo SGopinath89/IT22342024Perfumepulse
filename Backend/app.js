@@ -36,7 +36,17 @@ app.use(express.json());
 
 
 
-
+//database
+mongoose.connect(process.env.CONNECTION_STRING, {
+   
+    dbName: 'eshop'
+})
+.then(()=>{
+    console.log('Database Connection is ready...')
+})
+.catch((err)=>{
+    console.log(err);
+})
 
 
 
