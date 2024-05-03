@@ -26,3 +26,32 @@ app.use(expres.json());
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const port =5000;
+
+//Server
+app.listen(port, ()=>{
+   
+    console.log(`Server is running now http://localhost:${port}`)
+})
