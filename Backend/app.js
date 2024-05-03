@@ -12,7 +12,7 @@ require('dotenv/config');
 
 
 //middleware
-app.use(expres.json());
+app.use(express.json());
 
 
 
