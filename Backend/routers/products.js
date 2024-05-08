@@ -46,17 +46,17 @@ router.get('/newcollections', async (req, res)=>{
     res.json(newCollection);
 })
 
-
-
-
-
-
-
-
-
-
-
-
+// Endpoint for getting most popular products
+router.get('/popular', async (req, res) => {
+    try {
+        // Find products with rating greater than 50, sorted by rating descending
+        const popularProducts = await Product.find({ rating: { $gt: 50 } }).sort({ rating: -1 }).limit(8);
+        res.json(popularProducts);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 router.get(`/`, async(req, res) =>{
