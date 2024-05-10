@@ -58,7 +58,7 @@ router.get('/popular', async (req, res) => {
     }
 });
 
-
+//get product
 router.get(`/`, async(req, res) =>{
     //const productList = await Product.find().select('name image -_id'); //if you want whole data just remove ".select('name');"
 
@@ -150,4 +150,34 @@ router.post(`/`, uploadOptions.single('image'), async (req, res) =>{
         res.send(product);
 })
 
+//Update Product
+router.put('/:id', async (req, res)=>{
+    if(!mongoose.isValidObjectId(req.params.id)){
+        res.status(400).send('Invalid Product Id')
+    }
+    
+
+    const product= await Product.findByIdAndUpdate(
+        req.params.id,
+        {
+            name: req.body.name,
+            description: req.body.description,
+            richDescription: req.body.richDescription,
+            image: req.body.image,
+            brand: req.body.brand,
+            price: req.body.price,
+            category: req.body.category,
+            countInStock: req.body.countInStock,
+            rating: req.body.rating,
+            numReviews: req.body.numReviews,
+            isFeatured: req.body.isFeatured,
+        },
+        {new: true}
+    )
+
+    if(!product){
+        return res.status(500).send('The product cannot be updated!')
+    }
+    res.send(product);
+})
 module.exports = router;
