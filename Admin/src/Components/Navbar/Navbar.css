@@ -1,0 +1,33 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 60px;
+    box-shadow: 0 1x 3px -2px #000;
+    margin-bottom: 1px;
+    background: linear-gradient(180deg, #f794d9, #8aaf9522 50%);;
+    height: 15vh;
+}
+
+.navbar .title{
+    color: rgb(44, 46, 199);
+    font-size: 30px;
+    font-weight: 700;
+}
+.nav-logo{
+    width:8%;
+}
+.nav-profile{
+    width: 75px;
+}
+@media(max-width:800px){
+    .navbar{
+        padding: 15px 30px;
+    }
+    .nav-logo{
+        width: 150px;
+    }
+    .nav-profile{
+        width: 60px;
+    }
+}
