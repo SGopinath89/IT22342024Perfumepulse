@@ -192,4 +192,29 @@ router.delete('/:id', (req, res)=>{
         return res.status(500).json({success: false, error: err})
     })
 })
+
+
+
+
+
+router.get(`/get/count`, async(req, res) =>{
+    const productCount = await Product.countDocuments()
+
+    if (!productCount){
+        res.status(500).json({success: false})
+    }
+    res.send({
+        produtCount: productCount
+    });
+}) 
+
+router.get(`/get/featured/:count`, async(req, res) =>{
+    const count = req.params.count ? req.params.count : 0
+    const products = await Product.find({isFeatured: true}).limit(+count)
+
+    if (!products){
+        res.status(500).json({success: false})
+    }
+    res.send(products);
+}) 
 module.exports = router;
