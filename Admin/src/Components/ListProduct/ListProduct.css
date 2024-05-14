@@ -40,6 +40,14 @@
 .listproduct-allproducts{
     overflow-y: auto;
 }
+
+.count{
+    color: red;
+    font-weight: 600;
+}
+.productcount{
+    margin-left: 600px;
+}
 @media(max-width:800px){
     .list-product{
         box-sizing: border-box;

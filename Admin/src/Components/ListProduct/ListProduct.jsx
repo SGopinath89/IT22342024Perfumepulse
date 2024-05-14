@@ -5,6 +5,7 @@ import cross_icon from '../../assets/cross_icon.png'
 const ListProduct = () => {
 
     const [allproducts,setAllProducts] = useState([]);
+    const [productCount,setProductCount]=useState(0);
 
     const fetchInfo = async ()=>{
         await fetch('http://localhost:5000/api/v1/products/')
@@ -28,9 +29,25 @@ const ListProduct = () => {
         await fetchInfo();
     }
 
+    const count = async () => {
+        await fetch('http://localhost:5000/api/v1/products/get/count')
+            .then((res) => res.json())
+            .then((data) => {
+                setProductCount(data.productCount);
+            })
+            .catch((error) => {
+                console.error('Error fetching product count:', error);
+            });
+    };
+
+    useEffect(() => {
+        count();
+    }, []);
+
   return (
     <div className='list-product'>
         <h1>All Products List</h1>
+        <p className='productcount'><i>You added <span className='count'>{productCount}</span> products to sale</i></p>
         <div className="listproduct-format-main">
             <p>Products</p>
             <p>Title</p>
