@@ -5,15 +5,19 @@ const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 
 //Get Users
-router.get('/',async(req,res)=>{
-    const userList=await User.find().select('name phone email');
+router.get(`/`,async(req,res)=>{
+    try{
+        const userList=await User.find().select('name phone email');
 
-    if(!userList){
-        res.status(500).json({sucess:false})
+        if(!userList || userList.length===0){
+            return res.status(404).json({success:false,message:"No users found"});
+        }
+        res.status(200).json({success:true,data:userList});
+
+    }catch(error){
+        console.error(error);
+        res.status(500).json({success:false,message:"Internal Server Error"});
     }
-
-    res.send(userList);
-
 })
 
 //Get  user by ID
