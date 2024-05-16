@@ -100,18 +100,23 @@ router.post('/login',async(req,res)=>{
     }
 
     if(user && bcrypt.compareSync(req.body.password,user.passwordHash)){
+       try{
         const token=jwt.sign(
             {
                 userId:user.id,
-                isAdmin:user.isAdmin,
-
+                //isAdmin:user.isAdmin
             },
             secret,
-            {expireIn: 'id'}
-        )
-        res.status(200).send({user:user.email,token:token})
+            {expiresIn: 'id'}
+        );
+        res.status(200).send({user:user.email,token:token});
+
+       }catch(error){
+        console.error('Error signing JWT token:',error);
+        return res.status(500).json({error:'Internal Server error'});
+       }
     }else{
-        res.status(400).send('Password is wrong');
+        return res.status(400).json({error: 'Password is wrong'});
     }
 
 })
@@ -135,11 +140,11 @@ router.post('/register',async(req,res)=>{
     user=await user.save();
 
     if(!user){
-        return res.status(400).send('the user cannot be created')
+        return res.status(400).json({success:false,errors:"failed to register the user. Please check the input data."})
     }
     
     
-    res.send(user);
+    res.send(201).json({success:true,message:"User registered successfully",user});
 })
 
 
@@ -157,7 +162,7 @@ router.delete('/:id',(req,res)=>{
 })
 
 
-router.get('/get/count',async(req,res)=>{
+router.get(`/get/count`,async(req,res)=>{
     const userCount= await User.countDocuments()
 
     if(!userCount){
