@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './GalleryPhotos.css';
 
-const GalleryPhotos = () =>{
+const GalleryPhotos = () => {
+  const [productId, setProductId] = useState('');
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setImages(files);
+  };
 
-    const [isLoading, setIsLoading] = useState(false);
+  const handleProductIdChange = (e) => {
+    setProductId(e.target.value);
+    // Clear images if the productId input field is cleared
+    if (!e.target.value) {
+      setImages([]);
+    }
+  };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-const uploadImages = async () => {
+  const uploadImages = async () => {
     setIsLoading(true);
     const formData = new FormData();
     images.forEach((image, index) => {
@@ -46,16 +46,16 @@ const uploadImages = async () => {
   return (
     <div className='gallery-photos'>
       <h2>Update Gallery Photos</h2>
-
-
-
-
-
-
-
-
-
-
+      <input type="text" placeholder="Enter Product ID" value={productId} onChange={handleProductIdChange} />
+      {/* Conditionally render the file input based on the presence of productId */}
+      {productId && (
+        <>
+          <input type="file" accept="image/*" multiple onChange={handleImageChange} />
+          <button onClick={uploadImages} disabled={isLoading || images.length === 0 || !productId}>
+            {isLoading ? 'Uploading...' : 'Upload Images'}
+          </button>
+        </>
+      )}
     </div>
   );
 };
