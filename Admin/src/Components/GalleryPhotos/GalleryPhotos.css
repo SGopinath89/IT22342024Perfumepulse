@@ -1,0 +1,30 @@
+.gallery-photos {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 800px;
+    padding: 30px 60px;
+    margin: 20px 30px;
+    border-radius: 6px;
+    background: white;
+  }
+  
+  .gallery-photos h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .gallery-photos input[type="text"],
+  .gallery-photos input[type="file"] {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    padding-left: 15px;
+    border: 1px solid #c3c3c3;
+    outline: none;
+    color: #7b7b7b;
+    font-family: "Poppins";
+    font-size: 14px;
+    margin-top: 10px;
+  }
