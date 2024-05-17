@@ -28,3 +28,30 @@
     font-size: 14px;
     margin-top: 10px;
   }
+
+  .gallery-photos button {
+    box-sizing: border-box;
+    width: 160px;
+    height: 50px;
+    border-radius: 6px;
+    background: #6079ff;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  
+  .gallery-photos button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  @media(max-width: 800px) {
+    .gallery-photos {
+      width: auto;
+      padding: 30px;
+      margin: 20px;
+    }
+  }
