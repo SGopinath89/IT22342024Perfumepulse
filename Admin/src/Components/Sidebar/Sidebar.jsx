@@ -5,6 +5,7 @@ import add_product_icon from "../../assets/Product_Cart.svg"
 import update_gallery_icon from "../../assets/updategallery.jpg"
 import list_product_icon from "../../assets/Product_list_icon.svg"
 import update_product_icon from "../../assets/update.png"
+import order_icon from "../../assets/order.png"
 
 const Sidebar = () => {
   return (
@@ -34,6 +35,13 @@ const Sidebar = () => {
             <div className="sidebar-item">
                 <img src={list_product_icon} alt="" />
                 <p>Product List</p>
+            </div>
+        </Link>
+
+        <Link to={'/orders'} style={{textDecoration: "none"}}>
+            <div className="sidebar-item">
+                <img src={order_icon} alt="" width={"35px"} style={{margin:'0px 30px 0px 0px'}}/>
+                <p>Orders</p>
             </div>
         </Link>
     </div>

@@ -13,6 +13,28 @@ router.get('/', async (req, res)=>{
     res.send(orderList);
 })
 
+router.get('/getorders', async (req, res) => {
+    try {
+      const orders = await Order.find()
+        .populate('user', 'name')
+        .populate({
+          path: 'orderItems',
+          populate: {
+            path: 'product',
+            select: 'name', // Select only the 'name' property
+          },
+        });
+  
+      if (!orders) {
+        return res.status(404).json({ success: false, message: 'No orders found' });
+      }
+  
+      res.status(200).json(orders);
+    } catch (error) {
+      res.status(500).json({ success: false, message: 'Internal server error', error });
+    }
+  });
+
 
 router.get('/:id', async (req, res)=>{
     const order = await Order.findById(req.params.id)
@@ -27,7 +49,6 @@ router.get('/:id', async (req, res)=>{
     }
     res.send(order);
 })
-
 
 router.post('/', async (req, res)=>{
     const orderItemsIds = Promise.all(req.body.orderItems.map(async (orderItem) =>{
@@ -92,7 +113,7 @@ router.delete('/:id', (req, res)=>{
     Order.findByIdAndDelete(req.params.id).then(async order =>{
         if(order){
             await order.orderItems.map(async orderItem => {
-                await OrderItem.findByIdAndRemove(orderItem)
+                await OrderItem.findByIdAndDelete(orderItem)
             })
             return res.status(200).json({success: true, message: 'The order is deleted successfully!'})
         }
@@ -103,6 +124,8 @@ router.delete('/:id', (req, res)=>{
         return res.status(500).json({success: false, error: err})
     })
 })
+
+
 
 
 router.get(`/get/totalsales`, async(req, res) =>{
