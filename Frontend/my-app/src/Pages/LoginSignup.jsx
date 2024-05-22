@@ -68,9 +68,60 @@ export const LoginSignup = () => {
         }
     };
 
+    const signup = async (req,res)=>{
+        console.log("Signup Function Executeed", formData);
+    
+        let responseData;
+        await fetch('http://localhost:5000/api/v1/users/register', {
+          method:'POST',
+          headers:{
+            Accept:'application/json',
+            'Content-Type':'application/json',
+          },
+          body: JSON.stringify(formData),
+        }).then((response)=>response.json()).then((data)=>responseData=data)
+    
+        
+        if(responseData && responseData.success){
+          
+          
+          window.location.replace("/login");
+        }
+        else{
+          alert(responseData.errors)
+          
+        }
+    
+    
+      }
+
   return (
-    <div>
-      
+    <div className='loginsignup'>
+        <div className="loginsignup-container">
+          <h1>{state}</h1>
+          <div className="loginsignup-fields">
+            {state==="Sign Up"?<div className='signup-container'><input name='name' value={formData.name} onChange={changeHandler} type="text" maxLength={"12"} minLength={"8"} placeholder='Your Name' />
+            <input name='phone' value={formData.phone} onChange={changeHandler} type="text" placeholder='Your Phone' />
+            <input name='street' value={formData.street} onChange={changeHandler} type="text" placeholder='Street' />
+            <input name='apartment' value={formData.apartment} onChange={changeHandler} type="text" placeholder='Apartment' />
+            <input name='zip' value={formData.zip} onChange={changeHandler} type="text" placeholder='Zio Code' />
+            <input name='city' value={formData.city} onChange={changeHandler} type="text" placeholder='Your City' />
+            <input name='country' value={formData.country} onChange={changeHandler} type="text" placeholder='Your Country' />
+
+            </div>:<></>}
+            <input name='email' value={formData.email} onChange={onChangeHandler} type="email" placeholder='Email Address' />
+            <input name='password' value={formData.password} onChange={onChangeHandler}  type="password" placeholder="Password"  />
+          </div>
+          <button onClick={()=>{state==="Login"?login():signup()}}>Continue</button>
+          {state==="Sign Up"
+          ?<p className='loginsignup-login'>Already have an account <span onClick={()=>{setState("Login")}}>Login here</span></p>
+          :<p className='loginsignup-login'>Create an account <span onClick={()=>{setState("Sign Up")}}>Register here</span></p>}
+          
+          <div className="loginsignup-agree">
+            <input  type="checkbox" name='' id='' />
+            <p>By contonuing, I agree to the terms of use & privacy policy.</p>
+          </div>
+        </div>
     </div>
   )
 }
