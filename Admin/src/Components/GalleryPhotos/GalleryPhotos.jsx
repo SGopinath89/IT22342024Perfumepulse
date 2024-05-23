@@ -3,9 +3,18 @@ import axios from 'axios';
 import './GalleryPhotos.css';
 
 const GalleryPhotos = () => {
+
   const [productId, setProductId] = useState('');
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const isAuthenticated = localStorage.getItem('token');
+
+    if (!isAuthenticated) {
+        // Return null if user is not authenticated
+        return null;
+        
+    }
+    
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -28,12 +37,16 @@ const GalleryPhotos = () => {
     });
 
     try {
+      const token = localStorage.getItem('token');
       const response = await axios.put(`http://localhost:5000/api/v1/products/galleryimages/${productId}`, formData, {
         headers: {
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
         }
       });
       console.log('Uploaded images:', response.data.images);
+      alert("Success")
+      window.location.href = '/listproduct';
       // Handle success
     } catch (error) {
       console.error('Error uploading images:', error);

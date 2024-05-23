@@ -1,0 +1,87 @@
+/* ListUsers.css */
+
+.list-users {
+    width: 100%;
+    max-width: 1200px; /* Limiting width for better readability */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+   
+}
+
+.list-users h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #e9ecef; /* Light gray background for header */
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.user-details-header p {
+    font-weight: bold;
+    color: #555;
+}
+
+.user-details-list {
+    width: 100%;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.user-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.user-details .user-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Round user photo */
+    object-fit: cover;
+}
+
+.user-details p {
+    margin: 0;
+}
+
+.remove-icon {
+    cursor: pointer;
+    width: 20px;
+    height: auto;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.remove-icon:hover {
+    transform: scale(1.2); /* Scale up on hover */
+}
+
+@media(max-width: 768px) {
+    .list-users {
+        padding: 20px 10px;
+    }
+
+    .user-details-header, .user-details {
+        padding: 10px;
+    }
+
+    .user-details img {
+        width: 40px;
+        height: 40px;
+    }
+}

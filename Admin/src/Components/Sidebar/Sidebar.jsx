@@ -6,8 +6,16 @@ import update_gallery_icon from "../../assets/updategallery.jpg"
 import list_product_icon from "../../assets/Product_list_icon.svg"
 import update_product_icon from "../../assets/update.png"
 import order_icon from "../../assets/order.png"
+import teamwork from "../../assets/teamwork.png"
 
 const Sidebar = () => {
+    const isAuthenticated = localStorage.getItem('token');
+
+    if (!isAuthenticated) {
+        // Return null if user is not authenticated
+        return null;
+        
+    }
   return (
     <div className='sidebar'>
         <Link to={'/addproduct'} style={{textDecoration: "none"}}>
@@ -42,6 +50,13 @@ const Sidebar = () => {
             <div className="sidebar-item">
                 <img src={order_icon} alt="" width={"35px"} style={{margin:'0px 30px 0px 0px'}}/>
                 <p>Orders</p>
+            </div>
+        </Link>
+
+        <Link to={'/users'} style={{textDecoration: "none"}}>
+            <div className="sidebar-item">
+                <img src={teamwork} alt="" width={"35px"} style={{margin:'0px 30px 0px 0px'}}/>
+                <p>Users</p>
             </div>
         </Link>
     </div>

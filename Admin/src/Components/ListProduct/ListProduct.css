@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90%;
     height: 740px;
     padding: 10px 50px;
-    margin: 30px;
+    margin:20px 20px 20px;
     border-radius: 6px;
     background: white;
 }
@@ -18,13 +18,14 @@
 
 .listproduct-format-main{
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr;
     gap: 10px;
     width: 100%;
     padding: 20px 0px;
     color: #454545;
     font-size: 15px;
     font-weight: 600;
+    
 }
 .listproduct-format {
     align-items: center;
@@ -39,7 +40,10 @@
 }
 .listproduct-allproducts{
     overflow-y: auto;
+    
 }
+
+
 
 .count{
     color: red;

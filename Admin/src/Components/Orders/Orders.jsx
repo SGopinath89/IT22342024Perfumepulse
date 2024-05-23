@@ -6,6 +6,13 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const isAuthenticated = localStorage.getItem('token');
+
+    if (!isAuthenticated) {
+        // Return null if user is not authenticated
+        return null;
+        
+    }
 
   const fetchOrders = async () => {
     try {
@@ -37,11 +44,13 @@ const Orders = () => {
   }
 
   const removeOrder = async (_id) => {
-    
+    const token = localStorage.getItem('token');
+
       await fetch(`http://localhost:5000/api/v1/orders/${_id}`, {
         method: 'DELETE',
         headers: {
           Accept: 'application/json',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'Application/json'
         },
         body: JSON.stringify({_id:_id})

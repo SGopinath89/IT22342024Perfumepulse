@@ -1,0 +1,82 @@
+/* Orders.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0px;
+    padding: 0;
+
+  }
+  
+  .orders-container {
+    width: 80%;
+    margin: 20px 0px 0px 100px ;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size:14px ;
+  }
+
+  
+  
+  .orders-table th, .orders-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .orders-table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .orders-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .orders-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .orders-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color:#6079ff;
+    color: white;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #e7f4ea;
+    padding: 5px;
+    margin: 2px 0;
+    border-radius: 4px;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .error {
+    text-align: center;
+    font-size: 18px;
+    color: red;
+  }
+  

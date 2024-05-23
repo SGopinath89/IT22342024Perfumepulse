@@ -7,6 +7,13 @@ function UpdateProduct() {
   const [initialData, setInitialData] = useState({});
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  const isAuthenticated = localStorage.getItem('token');
+
+    if (!isAuthenticated) {
+        // Return null if user is not authenticated
+        return null;
+        
+    }
 
   useEffect(() => {
     // Fetch initial data when component mounts
@@ -43,8 +50,16 @@ function UpdateProduct() {
         }
       }
       // Send a PATCH request with only the updated fields
-      const response = await axios.put(`http://localhost:5000/api/v1/products/${productId}`, updatedFields);
+      const token = localStorage.getItem('token');
+      const response = await axios.put(`http://localhost:5000/api/v1/products/${productId}`, updatedFields,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+         
+      }
+      });
       console.log(response.data);
+      alert("Success")
+      window.location.href = '/listproduct';
     } catch (error) {
       setErrorMessage(error.response.data);
     }

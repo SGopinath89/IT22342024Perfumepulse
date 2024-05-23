@@ -1,3 +1,4 @@
+//import React, { useState } from 'react'
 import './AddProduct.css'
 import upload_area from '../../assets/upload_area.svg'
 
@@ -5,8 +6,17 @@ import upload_area from '../../assets/upload_area.svg'
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import Sidebar from '../Sidebar/Sidebar';
 
 const AddProduct = () => {
+  const isAuthenticated = localStorage.getItem('token');
+
+    if (!isAuthenticated) {
+        // Return null if user is not authenticated
+        return null;
+        
+    }
+
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -40,12 +50,14 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem('token');
       const formDataToSend = new FormData();
       for (const key in formData) {
         formDataToSend.append(key, formData[key]);
       }
       const res = await axios.post('http://localhost:5000/api/v1/products/', formDataToSend, {
         headers: {
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
@@ -61,7 +73,9 @@ const AddProduct = () => {
   };
 
   return (
+    
     <div className='addproduct'>
+      
       <h2>Add Product</h2>
       <form onSubmit={handleSubmit}>
         <div className="addproduct-itemfield">
@@ -157,3 +171,5 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+
+

@@ -121,6 +121,19 @@ router.post('/login',async(req,res)=>{
 
 })
 
+// Admin login endpoint
+router.post('/admin/login', (req, res) => {
+    const { email, password } = req.body;
+  
+    // Replace with your actual user validation logic
+    if (email === 'admin@gmail.com' && password === 'admin123') {
+      const token = jwt.sign({ email, isAdmin: true }, process.env.secret, { expiresIn: '1h' });
+      res.status(200).json({ token });
+    } else {
+      res.status(401).json({ message: 'Invalid credentials' });
+    }
+  });
+
 
 //user register
 router.post('/register',async(req,res)=>{

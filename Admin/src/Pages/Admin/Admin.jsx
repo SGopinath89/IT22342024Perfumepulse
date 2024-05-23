@@ -7,18 +7,20 @@ import ListProduct from '../../Components/ListProduct/ListProduct';
 import UpdateProduct from '../../Components/UpdateProduct/UpdateProduct';
 import GalleryPhotos from '../../Components/GalleryPhotos/GalleryPhotos';
 import Orders from '../../Components/Orders/Orders';
+import ListUsers from '../../Components/ListUsers/ListUsers';
 
 
 const Admin = () => {
   return (
     <div className='admin'>
-        <Sidebar/>
+        
         <Routes>
           <Route path='/addproduct' element={ <AddProduct/> }/>
           <Route path='/listproduct' element={ <ListProduct/> }/>
           <Route path='/updateproduct' element={ <UpdateProduct/> }/>
           <Route path='/updategallery' element={ <GalleryPhotos/> }/>
           <Route path='/orders' element={ <Orders/> }/>
+          <Route path='/users' element={ <ListUsers/> }/>
         </Routes>
     </div>
   )

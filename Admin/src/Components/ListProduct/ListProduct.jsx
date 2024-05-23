@@ -6,6 +6,13 @@ const ListProduct = () => {
 
     const [allproducts,setAllProducts] = useState([]);
     const [productCount,setProductCount]=useState(0);
+    const isAuthenticated = localStorage.getItem('token');
+
+    if (!isAuthenticated) {
+        // Return null if user is not authenticated
+        return null;
+        
+    }
 
     const fetchInfo = async ()=>{
         await fetch('http://localhost:5000/api/v1/products/')
@@ -18,10 +25,12 @@ const ListProduct = () => {
     },[])
 
     const remove_product = async (id)=>{
+        const token = localStorage.getItem('token');
         await fetch(`http://localhost:5000/api/v1/products/${id}` , {
             method:"DELETE",
             headers:{
                 Accept:'application/json',
+                'Authorization': `Bearer ${token}`,
                 'Content-Type':'Application/json'
             },
             body:JSON.stringify({id:id})
