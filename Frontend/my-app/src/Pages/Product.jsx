@@ -15,4 +15,19 @@ const Product = () => {
 
   const {productId} = useParams();
   const product = all_product.find((e)=>e.id ===productId)
+
+  if(!product){
+    return <div>Loading...</div>
+  }
+
+  
+  return (
+    <div className='A'>
+        <Breadcrum product={product}/>
+        <ProductDisplay product={product}/>
+        <ProductSelection/>
+    </div>
+  )
 }
+
+export default Product
