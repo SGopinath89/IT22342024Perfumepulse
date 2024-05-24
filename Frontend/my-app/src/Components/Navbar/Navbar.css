@@ -1,0 +1,318 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 0px;
+    box-shadow: 0 1px 3px -2px black;
+    align-items: center;
+    height: 8vh;
+    width: auto;
+}
+
+.navbar .nav-logo img{
+    width: 60px;
+    margin-right: 0px;
+    padding-left: 10px;
+}
+
+.nav-logo{
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+.nav-logo p {
+    color: #171717;
+    font-size: 32px;
+    font-weight: 600;
+    margin-left: 5px;
+    padding-right: 25px;
+    font-family: 'Lobster', cursive;
+}
+
+.nav-logo img {
+    width: 80%;
+    margin-left: 25px;
+}
+
+
+
+.nav-menu{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+    color: #626262;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.nav-menu li {
+    display: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
+.nav-menu li:hover{
+    transform: scale(1.05);
+    transition: 0.1s;
+}
+
+.nav-menu hr{
+    border: none;
+    width: 80%;
+    height: 3px;
+    border-radius: 10px;
+    background: #FF4141;
+}
+
+.nav-login-cart {
+    display: flex;
+    align-items: center;    
+    gap: 15px;
+    margin-right: 30px;
+    margin-left: -30px;
+}
+
+.nav-login-cart button {   
+    border: none;    
+    color: #515151;    
+    background: white;
+    cursor: pointer;
+    margin-left: -40px;    
+} 
+
+.login{
+    margin-right: 10px;
+    margin-left: -50px;
+}
+
+.nav-login-cart img{
+    width: 25px;
+}
+
+.nav-cart-count {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -35px;
+    margin-left: -25px;
+    border-radius: 11px;
+    font-size: 13px;
+    background: red;
+    color: white;
+}
+
+.nav-dropdown{
+    display: none;
+}
+
+@media(max-width:1280px){
+    .navbar{
+        padding: 12px 50px;
+    }
+    .nav-logo img {
+        width: 40px;
+    }
+    .nav-logo p {
+        font-size: 25px;
+    }
+    .nav-menu{
+        gap:30px;
+        font-size: 16px;
+    }
+    .nav-login-cart{
+        gap:30px;
+    }
+    .nav-cart-count button{
+        width: 120px;
+        height: 45px;
+        font-size:16px;
+    }
+    .nav-cart-count{
+        margin-left: -40px;
+        font-size: 12px;
+    }
+}
+
+@media(max-width:1024px){
+    .navbar{
+        padding: 12px 30px;
+    }
+    .nav-menu{
+        gap:25px;
+        font-size: 14px;
+    }
+    .nav-login-cart button{
+        width: 80px;
+        height: 35px;
+        font-size: 14px;
+    }
+    .nav-cart-cart img{
+        width: 30px;
+    }
+    .nav-cart-count{
+        width: 18px;
+        height: 18px;
+        
+    }
+}
+
+/*css for login title*/
+.tooltip-container {
+    position: relative;
+    display: inline-block; /* Adjust as needed */
+  }
+  
+ 
+  .tooltip-container::after {
+    content: "Login";
+    position: absolute;
+    bottom: 100%; /* Position the tooltip above the element */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333; /* Tooltip background color */
+    color: #fff; /* Tooltip text color */
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+  
+  .tooltip-container:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /*css for logout title*/
+  .tooltip-container-logout {
+    position: relative;
+    display: inline-block; /* Adjust as needed */
+  }
+  
+ 
+  .tooltip-container-logout::after {
+    content: "Logout";
+    position: absolute;
+    bottom: 100%; /* Position the tooltip above the element */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333; /* Tooltip background color */
+    color: #fff; /* Tooltip text color */
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+  
+  .tooltip-container-logout:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+  /*css for cart title*/
+  .tooltip-container-cart {
+    position: relative;
+    display: inline-block; /* Adjust as needed */
+  }
+  
+ 
+  .tooltip-container-cart::after {
+    content: "Cart";
+    position: absolute;
+    bottom: 100%; /* Position the tooltip above the element */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333; /* Tooltip background color */
+    color: #fff; /* Tooltip text color */
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000; /*Ensure it appears above other content */
+  }
+  
+  .tooltip-container-cart:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .welcome-message {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-right: 40px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    width: 120px;
+  }
+  
+  .welcome-message:hover {
+    background-color: #bdc3c7;
+  }
+  
+  .green-dot {
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+@media(max-width:800px){
+    .navbar{
+        padding: 10px 0px;
+    }
+    .nav-dropdown{
+        display: block;
+        width: 30px;
+        rotate: -90deg;
+        transition: 0.5s;
+    }
+    .nav-menu{
+        display: none;
+        height: 80px;
+        width: 100%;
+        position: absolute;
+        background-color: white;
+        justify-content: center;
+        top: 50px;
+    }
+    .nav-menu-visible {
+        display: flex;
+    }
+    .nav-dropdown.open{
+        transform: rotate(90deg);
+    }
+}
+
+@media(max-width:500px){
+    .navbar{
+        width: 8px 0px;
+        gap: 0;
+    }
+    .nav-logo{
+        transform: scale(0.8);
+    }
+}
