@@ -18,3 +18,8 @@
 .productdisplay-img-list img {
     height: 138px;
 }
+
+.productdisplay-main-img{
+    width: 550px;
+    height:600px;
+}
