@@ -37,8 +37,14 @@ const ListUsers = () => {
 
     // Function to remove a user by ID
     const removeUser = async (id) => {
+        if (isAuthenticated) {
         try {
+            const token = localStorage.getItem('token');
             await fetch(`http://localhost:5000/api/v1/users/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
                 method: "DELETE",
             });
             // After deletion, fetch updated users data
@@ -46,6 +52,7 @@ const ListUsers = () => {
         } catch (error) {
             console.error('Error removing user:', error);
         }
+    }
     };
 
     return (
@@ -55,6 +62,7 @@ const ListUsers = () => {
                 <p>Photo</p>
                 <p>Name</p>
                 <p>Email</p>
+                <p style={{width:"0px"}}>Phone</p>
                 <p>Remove</p>
             </div>
             <div className="user-details-list">
@@ -63,6 +71,7 @@ const ListUsers = () => {
                         <img src={`http://localhost:5000/${user.profilePhoto}`} alt="User" className="user-photo" />
                         <p>{user.name}</p>
                         <p>{user.email}</p>
+                        <p>{user.phone}</p>
                         <img src={cross_icon} alt="Remove" className="remove-icon" onClick={() => removeUser(user._id)} />
                     </div>
                 ))}
