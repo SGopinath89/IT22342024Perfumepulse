@@ -34,7 +34,42 @@ const ProductDisplay = (props) =>{
                 <img className='productdisplay-main-img' src={product.image} alt="" />
             </div>
         </div> 
-       
+        <div className="productdisplay-right">
+            <h1>{product.name}</h1>
+             <div className="productdisplay-right-stars">
+                <img src={star_icon} alt="" />
+                <img src={star_icon} alt="" />
+                <img src={star_icon} alt="" />
+                <img src={star_icon} alt="" />
+                <img src={star_dull_icon} alt="" />
+                <p>(122)</p>
+            </div>
+            <div className="productdisplay-right-prices">
+                <div className="productdisplay-right-price-old">
+                    {product.brand}
+                </div>
+                <div className="productdiplay-right-price-new">
+                ${product.price}
+                </div>
+            </div>
+            <div className="productdisplay-right-description">
+                {product.description}
+            </div>
+            <div className="productdisplay-right-size">
+                <h1>Quentity</h1>
+                <input type="number"  name="tentacles" min="1" max="100" value="1"/><br />
+            </div>
+           
+           
+            {isAuthenticated ? (
+                <button onClick={handleAddToCart}>ADD TO CART</button>
+            ) : (
+                <button onClick={() => window.location.href = '/login'}>LOGIN TO ADD TO CART</button>
+            )}
+            
+
+           
+        </div>
 
 
 
