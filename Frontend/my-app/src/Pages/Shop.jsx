@@ -9,6 +9,10 @@ import axios from 'axios';
 import FindUs from '../Components/FindUs/FindUs';
 import { SearchBar } from '../Components/SearchBar/SearchBar';
 
+
+//sample
+//new Collection
+
 const Shop = () => {
  
 
