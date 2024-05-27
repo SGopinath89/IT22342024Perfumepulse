@@ -71,57 +71,35 @@ const ProductDisplay = (props) =>{
            
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
+        <div className="productdisplay-rich-description">
+                    {/* Toggle description button */}
+                    <button onClick={() => setShowDescription(!showDescription)}>
+                        {showDescription ? 'Hide' : 'Show more..'}
+                    </button>
+                    {/* Description */}
+                    {showDescription && (
+                        <div>
+                        <p>{product.richDescription}</p>
+                        <p className='productdisplay-right-category'><span>Category : </span><i>{product.category}</i></p>
+                        <p className='productdisplay-right-category'><span>Count In Stock : </span><i>{product.countInStock}</i></p>
+                        </div>
+                    )}
+            </div>
         </div>
     )
 }
 
 export default ProductDisplay
+
+
+
+
+
+
+
+
+
+
+
+
+    
