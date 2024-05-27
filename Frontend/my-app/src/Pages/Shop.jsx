@@ -13,6 +13,8 @@ import NewCollections from '../Components/NewCollection/NewCollection';
 //sample
 //new Collection
 //Popular
+//News Letter
+
 
 const Shop = () => {
  
