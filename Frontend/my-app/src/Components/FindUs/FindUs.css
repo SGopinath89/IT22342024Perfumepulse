@@ -1,0 +1,51 @@
+.findus {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center the children horizontally */
+  }
+
+  .findus hr{
+    width:200px;
+    height: 6px;
+    border-radius: 10px;
+    background: #252525;
+    margin-bottom: 50px;
+}
+
+.findus h1{
+    color: #171717;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.findus-container {
+    display: flex;
+    width: 100%; /* Ensure both divs occupy the full width */
+  }
+
+.findus-left{
+    width: 50%;
+    height: 80vh;
+    background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
+    
+}
+
+.findus-left p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+.findus-right{
+    width: 50%;
+    height: 80vh;
+   background-color: white;
+}
+
+.findus-right iframe{
+    width: 100%;
+    height: 80vh;
+   border: none;
+}
+
+
