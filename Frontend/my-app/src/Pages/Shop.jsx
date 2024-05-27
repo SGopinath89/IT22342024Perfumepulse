@@ -14,6 +14,7 @@ import NewCollections from '../Components/NewCollection/NewCollection';
 //new Collection
 //Popular
 //News Letter
+//Find us
 
 
 const Shop = () => {
