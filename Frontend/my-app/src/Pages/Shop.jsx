@@ -12,6 +12,7 @@ import NewCollections from '../Components/NewCollection/NewCollection';
 
 //sample
 //new Collection
+//Popular
 
 const Shop = () => {
  
