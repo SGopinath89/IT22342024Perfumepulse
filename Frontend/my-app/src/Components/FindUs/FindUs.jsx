@@ -50,3 +50,5 @@ const FindUs =()=>{
 
 
 }
+
+export default FindUs
