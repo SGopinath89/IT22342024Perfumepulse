@@ -34,29 +34,50 @@ const ProductDisplay = () => {
   };
 
   return (
+<div>
+      {/* Display selected product */}
+      {selectedProduct && (
+        <div>
+          <h2>{selectedProduct.name}</h2>
+          
+          <img src={selectedProduct.image} alt={selectedProduct.name} width={"50%"} />
+        </div>
+      )}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {/* Display related products */}
+     
+      <div className="relatedproducts">
+        <h1>Related Products</h1>
+        <hr/>
+          <div className='relatedproducts-item'>
+            {relatedProducts.map((item, i) => (
+              <Item key={i} id={item.id} name={item.name} image={item.image} price={item.price} brand={item.brand} />
+            ))}
+          </div>
+      </div>
+    </div>
   );
 };
 
 export default ProductDisplay;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
