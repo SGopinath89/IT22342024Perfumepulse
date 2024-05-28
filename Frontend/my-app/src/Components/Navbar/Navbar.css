@@ -4,14 +4,15 @@
     padding: 16px 0px;
     box-shadow: 0 1px 3px -2px black;
     align-items: center;
-    height: 8vh;
+    height: 7vh;
     width: auto;
 }
 
 .navbar .nav-logo img{
-    width: 60px;
+    width: 80px;
     margin-right: 0px;
     padding-left: 10px;
+    padding-bottom: 50px;
 }
 
 .nav-logo{
@@ -21,7 +22,7 @@
 }
 
 .nav-logo p {
-    color: #171717;
+    color: #4c384f;
     font-size: 32px;
     font-weight: 600;
     margin-left: 5px;
@@ -43,10 +44,11 @@
     list-style: none;
     gap: 40px;
     color: #626262;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     margin-right: 20px;
     margin-left: 20px;
+    padding-bottom: 50px;
 }
 
 .nav-menu li {
@@ -74,8 +76,8 @@
 .nav-login-cart {
     display: flex;
     align-items: center;    
-    gap: 15px;
-    margin-right: 30px;
+    gap: 25px;
+    margin-right: 40px;
     margin-left: -30px;
 }
 
@@ -102,8 +104,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -35px;
-    margin-left: -25px;
+    margin-top: -34px;
+    margin-left: -38px;
     border-radius: 11px;
     font-size: 13px;
     background: red;
@@ -256,7 +258,7 @@
   .welcome-message {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     color: #2c3e50;
     margin-right: 40px;
@@ -265,7 +267,12 @@
     background-color: #ecf0f1;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-    width: 120px;
+    width: 180px;
+    gap: 15px;
+  }
+
+  .welcome-message img {
+    width: 30px;
   }
   
   .welcome-message:hover {
