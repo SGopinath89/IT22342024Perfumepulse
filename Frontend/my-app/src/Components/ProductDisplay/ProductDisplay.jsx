@@ -4,6 +4,7 @@ import './ProductDisplay.css'
 import star_icon from '../Assests/star_icon.png';
 import star_dull_icon from '../Assests/star_dull_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
+import CommentSection from '../CommentSection/CommentSection';
 
 
 const ProductDisplay = (props) =>{
@@ -85,6 +86,7 @@ const ProductDisplay = (props) =>{
                         </div>
                     )}
             </div>
+            <CommentSection productId={product.id} productImage={product.image}/>
         </div>
     )
 }
