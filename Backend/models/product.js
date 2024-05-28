@@ -57,6 +57,19 @@ const productSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
+  unlikes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
+ 
 });
 
 productSchema.virtual('id').get(function () {

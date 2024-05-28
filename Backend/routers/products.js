@@ -1,4 +1,5 @@
 const {Product} = require('../models/product');
+const { User } = require('../models/user');
 const express = require('express');
 const {Category} = require('../models/category');
 const router = express.Router();
@@ -207,6 +208,56 @@ router.get(`/get/count`, async(req, res) =>{
         productCount: productCount
     });
 }) 
+
+// Endpoint to like a product
+router.post('/:id/like', async (req, res) => {
+    const userId = req.body.userId;
+  
+    if (!mongoose.isValidObjectId(req.params.id) || !mongoose.isValidObjectId(userId)) {
+      return res.status(400).send('Invalid Product Id or User Id');
+    }
+  
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).send('Product not found');
+    }
+  
+    // Add user to likes array if not already liked
+    if (!product.likes.includes(userId)) {
+      product.likes.push(userId);
+      product.unlikes.pull(userId); // Remove user from unlikes if exists
+    } else {
+      product.likes.pull(userId); // If user already liked, remove like
+    }
+  
+    await product.save();
+    res.send(product);
+  });
+  
+  // Endpoint to unlike a product
+  router.post('/:id/unlike', async (req, res) => {
+    const userId = req.body.userId;
+  
+    if (!mongoose.isValidObjectId(req.params.id) || !mongoose.isValidObjectId(userId)) {
+      return res.status(400).send('Invalid Product Id or User Id');
+    }
+  
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).send('Product not found');
+    }
+  
+    // Add user to unlikes array if not already unliked
+    if (!product.unlikes.includes(userId)) {
+      product.unlikes.push(userId);
+      product.likes.pull(userId); // Remove user from likes if exists
+    } else {
+      product.unlikes.pull(userId); // If user already unliked, remove unlike
+    }
+  
+    await product.save();
+    res.send(product);
+  });
 
 
 module.exports = router;
