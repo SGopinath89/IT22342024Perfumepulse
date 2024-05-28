@@ -1,0 +1,109 @@
+ 
+  .loginsignup {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background-image: url("../../Components/Assests/loginbg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0px 15px 0px;
+    height: auto;
+  }
+  
+  .loginsignup-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    height: auto;
+  }
+  
+  .loginsignup-container h1 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 2rem;
+  }
+  
+  .loginsignup-fields {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .loginsignup-fields input {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    height: auto;
+  }
+  
+  .signup-container input {
+    margin-bottom: 0.75rem;
+  }
+  
+  .loginsignup-container button {
+    background: #ff7e5f;
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .loginsignup-container button:hover {
+    background: #feb47b;
+  }
+  
+  .loginsignup-login {
+    margin-top: 1rem;
+    color: #666;
+  }
+  
+  .loginsignup-login span {
+    color: #ff7e5f;
+    cursor: pointer;
+  }
+  
+  .loginsignup-agree {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+  
+  .loginsignup-agree input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: 5%;
+  }
+  
+  .loginsignup-agree p {
+    margin: 0;
+    color: #666;
+    font-size: 0.875rem;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .loginsignup-container {
+      padding: 1.5rem;
+    }
+  
+    .loginsignup-container h1 {
+      font-size: 1.75rem;
+    }
+  
+    .loginsignup-container button {
+      padding: 0.5rem;
+      font-size: 0.875rem;
+    }
+  }
+  
