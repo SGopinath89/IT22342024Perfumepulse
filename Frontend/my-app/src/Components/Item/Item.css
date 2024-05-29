@@ -1,0 +1,110 @@
+/* Base styles */
+.item {
+    width: auto;
+    max-width: 500px;
+    margin: 20px 15px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .item p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .item-brand {
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #777;
+  }
+  
+  .item-prices {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .item-price-new {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .item-like,
+  .item-dislike {
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .item-like img,
+  .item-dislike img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .item-like:hover
+   {
+    color: #007bff;
+  }
+
+  .item-dislike:hover {
+    color: red;
+  }
+
+  .reaction {
+    display: flex;
+    gap: 10px;
+  }
+
+  .reaction img {
+    border-radius: 2px;
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .item {
+      max-width: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .item {
+      max-width: auto;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .item {
+      max-width: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .item {
+      max-width: auto;
+    }
+  }
+  
