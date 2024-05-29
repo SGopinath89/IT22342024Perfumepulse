@@ -1,0 +1,79 @@
+.search-filter {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  width: 100%; 
+  
+  
+}
+
+.input-wrapper {
+  position: relative;
+  margin-right: 20px;  
+}
+
+.input-wrapper img {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+  cursor: pointer; 
+  margin-top: 5px;
+}
+
+.input-wrapper input {
+  padding: 5px 40px 5px 30px; 
+  border: 1px solid #ddd; 
+  border-radius: 20px; 
+  background-color: #f9f9f9; 
+  font-size: 1rem;
+  width: 289px; 
+  outline: none; 
+  height: 40px;
+  margin-top: 10px;
+}
+
+.input-wrapper input::placeholder {
+  color: #999; 
+}
+
+.filter {
+  margin-right: 48px; 
+}
+
+.filter img {
+  margin-top: 10px;
+  margin-right: 2px;
+  width: 23px;
+  cursor: pointer; 
+}
+
+/* Tooltip styling */
+.tooltip-container-filter {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container-filter::after {
+  content: "Filter Products";
+  position: absolute;
+  bottom: 0px;
+  left: -70px;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  margin-top: 500px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.tooltip-container-filter:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
