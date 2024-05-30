@@ -9,6 +9,7 @@ import Product from './Pages/Product';
 import LoginSignup from './Pages/LoginSignup';
 import { SearchBar } from './Components/SearchBar/SearchBar';
 import { SearchResultsList } from './Components/SearchResultsList/SearchResultsList';
+import CartItems from './Components/CartItems/CartItems';
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/product' element={<Product/>}>
             <Route path=':productId' element={<Product/>}/>
         </Route>
+        <Route path='/cart' element={<CartItems/>}/>
         <Route path='/login' element={<LoginSignup/>}/>
       </Routes>
         <Footer/>
