@@ -1,6 +1,6 @@
 import sample_image from '../Assests/sample_image.png'
 import { SearchBar } from '../SearchBar/SearchBar'
-
+import './Sample.css'
 
 const Sample=()=>{
     return (
