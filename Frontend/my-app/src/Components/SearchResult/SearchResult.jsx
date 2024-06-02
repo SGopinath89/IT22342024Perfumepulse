@@ -1,4 +1,4 @@
-//import "./SearchResult.css";
+import "./SearchResult.css";
 
 export const SearchResult = ({ result, onClick }) => {
   return (
