@@ -1,51 +1,126 @@
-.navbar{
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 60px;
-    box-shadow: 0 1x 3px -2px #000;
-    margin-bottom: 1px;
-    background: linear-gradient(180deg, #dcd6f9, #8aaf9522 50%);;
-    height: 15vh;
+    padding: 10px 30px;
+    background: linear-gradient(180deg, #f5f7fa, #c3cfe2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
 }
 
-.navbar .title{
+.nav-logo {
+    width: 100px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-logo:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: rgb(44, 46, 199);
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 700;
-    margin-left: -300px;
+    font-family: 'Roboto', sans-serif;
+    transition: color 0.3s ease-in-out;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.admin-panel {
+    font-family: 'Lobster', cursive;
+    font-size: 22px;
+    color: #555;
 }
-.nav-logo{
-    width:20%;
+
+.title hr {
+    margin: 0;
+    border: 0;
+    height: 2px;
+    background: #ddd;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 5px;
 }
-.nav-profile{
-    width: 75px;
+
+.nav-profile {
+    width: 35px;
+    transition: transform 0.3s ease-in-out;
 }
+
 
 .nav-button {
     background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 20px;
+    width: 80px;
     cursor: pointer;
     border-radius: 5px;
-    margin-left: -100px;
-    width: 80px;
-  }
-  
-  .nav-button:hover {
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-right: 25px;
+}
+
+.nav-button:hover {
     background-color: #0056b3;
-  }
-  
-@media(max-width:800px){
-    .navbar{
-        padding: 15px 30px;
+    transform: scale(1.1);
+}
+
+@media (max-width: 1200px) {
+    .title {
+        font-size: 24px;
     }
-    .nav-logo{
-        width: 150px;
+
+    .admin-panel {
+        font-size: 16px;
     }
-    .nav-profile{
-        width: 60px;
+
+    .nav-logo {
+        width: 100px;
+    }
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 22px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-logo {
+        width: 80px;
+    }
+
+    .nav-profile {
+        width: 30px;
+        margin-top: 10px;
+    }
+
+    .nav-button {
+        margin-top: 10px;
     }
 }

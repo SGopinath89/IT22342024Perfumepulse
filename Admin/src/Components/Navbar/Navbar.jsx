@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import navlogo from '../../assets/logo2.jpeg';
-import navProfile from '../../assets/nav-profile.svg';
-import Sidebar from '../Sidebar/Sidebar';
+import user from '../../assets/user.png';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -29,17 +28,17 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-<Link to={"/"}><img src={navlogo} alt="Logo" className='nav-logo'/></Link>
+      <Link to="/"><img src={navlogo} alt="Logo" className='nav-logo' /></Link>
       <div className="title">
-        PurfumePulse Admin Panel
+        PurfumePulse <hr /><span className='admin-panel'> Admin Panel </span>
       </div>
-      <img src={navProfile} alt="Profile" className='nav-profile'/>
+      
       {isLoggedIn ? (
         <button onClick={handleLogout} className='nav-button'>Logout</button>
       ) : (
         <button onClick={handleLogin} className='nav-button'>Login</button>
       )}
-      
+      <img src={user} alt="Profile" className='nav-profile' />
     </div>
   );
 };
