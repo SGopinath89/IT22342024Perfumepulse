@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import Breadcrum from '../Components/Breadcrums/Breadcrum'
 
 import ProductDisplay from '../Components/ProductDisplay/ProductDisplay';
-//import ProductSelection from '../Components/RelatedProducts/RelatedProducts';
+import ProductSelection from '../Components/RelatedProducts/RelatedProducts';
 //import '../Pages/CSS/Product.css'
 
 
@@ -25,7 +25,7 @@ const Product = () => {
     <div className='A'>
         <Breadcrum product={product}/>
         <ProductDisplay product={product}/>
-        {/* <ProductSelection/> */}
+        <ProductSelection/>
     </div>
   )
 }
