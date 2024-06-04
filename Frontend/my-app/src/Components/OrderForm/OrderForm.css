@@ -1,4 +1,65 @@
-.orderfform{
+.orderform{
+    margin-top:25px;
+    margin-bottom: 25px;
+}
+
+.order-form{
+    background-color: #f8f9fa;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
 
 }
+
+.order-form h2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+    font-size: 1.5em;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+
+.form-group label{
+    display: block;
+    width: 200px;
+    margin-bottom: -20px;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #495057;
+    border: none;
+}
+
+
+.form-group input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #495057;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+
+
+}
+
+.form-group input:focus{
+    border-color: #80bdff;
+    outline: none;
+
+}
+
+
+
+
+
 
