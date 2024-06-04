@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from React;
 import './Community.css';
-//import ChatsPage from '../Chatspage/ChatsPage'
+//import ChatsPage from '../ChatsPage/ChatsPage'
 //import AuthPage from '../AuthPage/AuthPage';
 
 function Community(){
