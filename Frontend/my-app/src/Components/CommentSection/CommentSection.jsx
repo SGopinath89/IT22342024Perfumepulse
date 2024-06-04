@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CommentSection.css';
 
-const CommentSection = ({ productId, productImage }) => {
+const CommentSection = ({ productId }) => {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
-    const [commentCount, setCommentCount] = useState(0); 
+    const [commentCount, setCommentCount] = useState(0);
     const [showAllComments, setShowAllComments] = useState(false);
 
     useEffect(() => {
         fetchComments();
-        fetchCommentCount(); 
+        fetchCommentCount();
     }, [productId]);
 
     const fetchComments = async () => {
@@ -35,8 +35,8 @@ const CommentSection = ({ productId, productImage }) => {
         const userId = localStorage.getItem('user-id');
         const token = localStorage.getItem('auth-token');
         try {
-            const response = await axios.post('http://localhost:5000/api/v1/comments', 
-                { userId, productId, content: newComment }, 
+            const response = await axios.post('http://localhost:5000/api/v1/comments',
+                { userId, productId, content: newComment },
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
             setComments([...comments, response.data.data]);
@@ -47,15 +47,28 @@ const CommentSection = ({ productId, productImage }) => {
         }
     };
 
+    const getCommentBackgroundColor = (category) => {
+        switch (category) {
+            case 'good':
+                return '#8ce47bac';
+            case 'neutral':
+                return '#dff70b86';
+            case 'bad':
+                return '#f70b0b6f';
+            default:
+                return 'white';
+        }
+    };
+
     return (
         <div className='comment-section'>
             <h2>User Thoughts <span className='count'>({commentCount} comments)</span></h2>
             <div className='comment-list'>
                 {showAllComments ? (
                     comments.map(comment => (
-                        <div key={comment._id} className='comment'>
+                        <div key={comment._id} className='comment' style={{ backgroundColor: getCommentBackgroundColor(comment.category) }}>
                             <div className="image-name">
-                                <img src={`http://localhost:5000/${comment.user.profilePhoto}`} alt={`${comment.user.name}'s profile`} className='profile-photo'/>
+                                <img src={`http://localhost:5000/${comment.user.profilePhoto}`} alt={`${comment.user.name}'s profile`} className='profile-photo' />
                                 <p><strong>{comment.user.name}</strong></p>
                             </div>
                             <p>{comment.content}</p>
@@ -64,8 +77,8 @@ const CommentSection = ({ productId, productImage }) => {
                     ))
                 ) : (
                     comments.slice(0, 3).map(comment => (
-                        <div key={comment._id} className='comment'>
-                            <img src={`http://localhost:5000/${comment.user.profilePhoto}`} alt={`${comment.user.name}'s profile`} className='profile-photo'/>
+                        <div key={comment._id} className='comment' style={{ backgroundColor: getCommentBackgroundColor(comment.category) }}>
+                            <img src={`http://localhost:5000/${comment.user.profilePhoto}`} alt={`${comment.user.name}'s profile`} className='profile-photo' />
                             <p><strong>{comment.user.name}</strong></p>
                             <p>{comment.content}</p>
                             <p className='comment-date'>{new Date(comment.dateCreated).toLocaleString()}</p>

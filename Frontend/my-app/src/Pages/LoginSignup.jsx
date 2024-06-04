@@ -7,6 +7,7 @@ export const LoginSignup = () => {
   const [formData, setFormData] = useState({
     name:"",
     phone:"",
+    //isAdmin:"",
     street:"",
     apartment:"",
     zip:"",
@@ -31,6 +32,10 @@ export const LoginSignup = () => {
     }
   };  
 
+
+  /* const changeHandler = (e)=>{
+      setFormData({...formData,[e.target.name]:e.target.value})
+  } */
 
   const loginchangeHandler = (e)=>{
     setLoginFormData({...loginformData,[e.target.name]:e.target.value})
@@ -120,6 +125,7 @@ const signup = async () => {
           <div className="loginsignup-fields">
             {state==="Sign Up"?<div className='signup-container'><input name='name' value={formData.name} onChange={changeHandler} type="text" maxLength={"12"} minLength={"8"} placeholder='Your Name' />
             <input name='phone' value={formData.phone} onChange={changeHandler} type="text" placeholder='Your Phone' />
+           {/*  <input name='isAdmin' value={formData.isAdmin} onChange={changeHandler} type="text" placeholder='Admin Code' /> */}
             <input name='street' value={formData.street} onChange={changeHandler} type="text" placeholder='Street' />
             <input name='apartment' value={formData.apartment} onChange={changeHandler} type="text" placeholder='Apartment' />
             <input name='zip' value={formData.zip} onChange={changeHandler} type="text" placeholder='Zio Code' />
@@ -137,7 +143,7 @@ const signup = async () => {
           :<p className='loginsignup-login'>Create an account <span onClick={()=>{setState("Sign Up")}}>Register here</span></p>}
           
           <div className="loginsignup-agree">
-            <input  type="checkbox" name='' id='' />
+            <input  type="checkbox" required/>
             <p>By contonuing, I agree to the terms of use & privacy policy.</p>
           </div>
         </div>

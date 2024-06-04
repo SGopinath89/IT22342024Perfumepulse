@@ -15,6 +15,11 @@ const commentSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+        enum: ['good', 'neutral', 'bad'],
+        default: 'neutral'
+    },
     dateCreated: {
         type: Date,
         default: Date.now,

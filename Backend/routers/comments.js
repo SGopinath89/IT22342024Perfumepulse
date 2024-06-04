@@ -3,6 +3,33 @@ const express = require('express');
 const router = express.Router();
 const {Product} = require('../models/product');
 const {user} = require('../models/user');
+const { spawn } = require('child_process');
+const path = require('path');
+
+function categorizeComment(content, callback) {
+    const scriptPath = path.resolve(__dirname, '../helpers/sentimentanalys.py');
+    const process = spawn('python', [scriptPath, content]);
+
+    let result = '';
+    
+    process.stdout.on('data', (data) => {
+        result += data.toString();
+    });
+
+    process.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+    });
+
+    process.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+        callback(result.trim());
+    });
+}
+
+// Example usage:
+categorizeComment('Bad', (category) => {
+    console.log('Comment category:', category);  // Should print the category 'good', 'neutral', or 'bad'
+});
 
 // Get All Comments for a Product
 router.get('/product/:productId', async (req, res) => {
@@ -45,20 +72,23 @@ router.get('/user/:userId', async (req, res) => {
 //Add a new Comment to a product
 router.post('/', async (req, res) => {
     const { userId, productId, content } = req.body;
-    try {
-        let comment = new Comment ({
-            user: userId,
-            product: productId,
-            content: content
-        });
-        comment = await comment.save();
-        if(!comment) {
-            return res.status(400).send("The comment cannot be created!");
+    categorizeComment(content, async (category) => {
+        try {
+            let comment = new Comment({
+                user: userId,
+                product: productId,
+                content: content,
+                category: category
+            });
+            comment = await comment.save();
+            if (!comment) {
+                return res.status(400).send("The comment cannot be created!");
+            }
+            res.status(201).json({ success: true, data: comment });
+        } catch (error) {
+            res.status(500).json({ success: false, message: "Internal Server Error" });
         }
-        res.status(201).json({success: true, data: comment});
-    } catch (error) {
-        res.status(500).json({success: false, message: "Inrenal Server Error"});
-    }
+    });
 });
 
 //Update a Comment
