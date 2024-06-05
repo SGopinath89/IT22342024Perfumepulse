@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.group-image {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 50px; 
+  z-index: 1000; 
+  
+}
+
+.group-image.animated {
+  animation: bounce 1s ease-in-out 5;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
