@@ -4,16 +4,17 @@
     padding: 16px 0px;
     box-shadow: 0 1px 3px -2px black;
     align-items: center;
-    height: 7vh;
+    height: 5vh;
     width: auto;
 }
 
 .navbar .nav-logo img{
     width: 80px;
-    margin-right: 0px;
-    padding-left: 10px;
-    padding-bottom: 50px;
+    padding: 0px 0px 50px 0px;
+   
 }
+
+
 
 .nav-logo{
     display: flex;
@@ -28,6 +29,8 @@
     margin-left: 5px;
     padding-right: 25px;
     font-family: 'Lobster', cursive;
+    transition: color 0.3s ease-in-out;
+
 }
 
 .nav-logo img {
@@ -35,7 +38,14 @@
     margin-left: 25px;
 }
 
+.nav-logo img:hover {
+    scale: 1.02 ;
+    transition: 0.3s ease-in-out;
+}
 
+.nav-logo:hover p {
+    color: #ff4141;
+  }
 
 .nav-menu{
     display: flex;
@@ -77,8 +87,9 @@
     display: flex;
     align-items: center;    
     gap: 25px;
-    margin-right: 40px;
+    margin-right: 20px;
     margin-left: -30px;
+   
 }
 
 .nav-login-cart button {   
@@ -104,8 +115,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -34px;
-    margin-left: -38px;
+    margin-top: -35px;
+    margin-left: -37px;
     border-radius: 11px;
     font-size: 13px;
     background: red;
@@ -114,11 +125,12 @@
 
 .nav-dropdown{
     display: none;
+    cursor: pointer;
 }
 
 @media(max-width:1280px){
     .navbar{
-        padding: 12px 50px;
+        padding: 12px 10px;
     }
     .nav-logo img {
         width: 40px;
@@ -170,25 +182,25 @@
 /*css for login title*/
 .tooltip-container {
     position: relative;
-    display: inline-block; /* Adjust as needed */
+    display: inline-block; 
   }
   
  
   .tooltip-container::after {
     content: "Login";
     position: absolute;
-    bottom: 100%; /* Position the tooltip above the element */
+    bottom: 100%; 
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333; /* Tooltip background color */
-    color: #fff; /* Tooltip text color */
+    background-color: #333; 
+    color: #fff; 
     padding: 5px 10px;
     border-radius: 4px;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s;
-    z-index: 1000; /* Ensure it appears above other content */
+    z-index: 1000; 
   }
   
   .tooltip-container:hover::after {
@@ -199,25 +211,25 @@
   /*css for logout title*/
   .tooltip-container-logout {
     position: relative;
-    display: inline-block; /* Adjust as needed */
+    display: inline-block; 
   }
   
  
   .tooltip-container-logout::after {
     content: "Logout";
     position: absolute;
-    bottom: 100%; /* Position the tooltip above the element */
+    bottom: 100%; 
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333; /* Tooltip background color */
-    color: #fff; /* Tooltip text color */
+    background-color: #333; 
+    color: #fff; 
     padding: 5px 10px;
     border-radius: 4px;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s;
-    z-index: 1000; /* Ensure it appears above other content */
+    z-index: 1000; 
   }
   
   .tooltip-container-logout:hover::after {
@@ -229,25 +241,25 @@
   /*css for cart title*/
   .tooltip-container-cart {
     position: relative;
-    display: inline-block; /* Adjust as needed */
+    display: inline-block; 
   }
   
  
   .tooltip-container-cart::after {
     content: "Cart";
     position: absolute;
-    bottom: 100%; /* Position the tooltip above the element */
+    bottom: 100%; 
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333; /* Tooltip background color */
-    color: #fff; /* Tooltip text color */
+    background-color: #333; 
+    color: #fff; 
     padding: 5px 10px;
     border-radius: 4px;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s;
-    z-index: 1000; /*Ensure it appears above other content */
+    z-index: 1000; 
   }
   
   .tooltip-container-cart:hover::after {
@@ -259,20 +271,29 @@
     display: flex;
     align-items: center;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: bold;   
     color: #2c3e50;
     margin-right: 40px;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 0px 0px;
+    border-radius: 50px;
     background-color: #ecf0f1;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-    width: 180px;
+    width: auto;
     gap: 15px;
+    height: 6vh;
+    z-index: 999;
+  }
+
+  .welcome-messagee {
+    z-index: 999;
   }
 
   .welcome-message img {
     width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding-left: 10px;
   }
   
   .welcome-message:hover {
@@ -323,3 +344,4 @@
         transform: scale(0.8);
     }
 }
+

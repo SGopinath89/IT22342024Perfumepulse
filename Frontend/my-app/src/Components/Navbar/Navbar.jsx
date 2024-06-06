@@ -29,9 +29,9 @@ const Navbar = () => {
       const token = localStorage.getItem('auth-token');
 
       try {
-        const response = await fetch(`http://localhost:5000/api/v1/users/profile/${userId}`,
-        { headers: { 'Authorization': `Bearer ${token}` } }
-        );
+        const response = await fetch(`http://localhost:5000/api/v1/users/profile/${userId}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
         if (response.ok) {
           const user = await response.json();
           setUserProfilePhoto(user.profilePhoto);
@@ -72,19 +72,20 @@ const Navbar = () => {
         <Link style={{ textDecoration: "none" }} to="/"><p>PerfumePulse</p></Link>
       </div>
 
-      <div className="nav-dropdown" onClick={() => setMenuVisible(!isMenuVisible)}>☰</div>
+      <div className={`nav-dropdown ${isMenuVisible ? 'open' : ''}`} onClick={() => setMenuVisible(!isMenuVisible)}>☰</div>
 
       <ul className={`nav-menu ${isMenuVisible ? 'visible' : ''}`}>
         <li onClick={() => { setMenu("shop"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/">Home</Link>{menu === "shop" ? <hr /> : null}</li>
         <li onClick={() => { setMenu("bloombliss"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/bloombliss">Bloom Bliss</Link>{menu === "bloombliss" ? <hr /> : null}</li>
         <li onClick={() => { setMenu("woodlandwonders"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/woodlandwonders">Woodland Wonders</Link>{menu === "woodlandwonders" ? <hr /> : null}</li>
         <li onClick={() => { setMenu("citruscharms"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/citruscharms">Citrus Charms</Link>{menu === "citruscharms" ? <hr /> : null}</li>
+        {/* <li onClick={() => { setMenu("community"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/community">Community</Link>{menu === "community" ? <hr /> : null}</li> */}
       </ul>
 
       <div className="nav-login-cart">
         {localStorage.getItem('auth-token') ? (
           <>
-            <Link style={{ textDecoration: "none" }} to='/userprofile' className="welcome-message">
+            <Link style={{ textDecoration: "none" }} to='/userprofile' className="welcome-messagee">
               <div className="welcome-message">
                 {userProfilePhoto && <img src={`http://localhost:5000/${userProfilePhoto}`} alt="Profile" />}
                 {userName}
