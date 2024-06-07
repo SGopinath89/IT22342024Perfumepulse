@@ -28,6 +28,7 @@ const productsRoutes = require('./routers/products');
 const usersRoutes = require('./routers/users');
 const ordersRoutes = require('./routers/orders');
 const commentsRoutes = require('./routers/comments');
+const communityRoutes = require('./routers/community')
 
 const api = process.env.API_URL;
 
@@ -36,7 +37,7 @@ app.use(`${api}/products`, productsRoutes);
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/orders`, ordersRoutes);
 app.use(`${api}/comments`, commentsRoutes);
-
+app.use(`${api}/community`, communityRoutes);
 
 
 
