@@ -1,5 +1,5 @@
 import React from 'react';
-import './CSS/Checkout.css';
+//import './CSS/Checkout.css';
 import OrderForm from '../Components/OrderForm/OrderForm';
 import {useLocation} from 'react-router-dom';
 
