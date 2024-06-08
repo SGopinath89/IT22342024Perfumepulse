@@ -1,0 +1,33 @@
+.order-details {
+    height: 60vh; /* Set specific height */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .order-details h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .order-details table {
+    width: 100%;
+    border-collapse: collapse;
+    
+  }
+  
+  .order-details th,
+  .order-details td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .order-details th {
+    background-color: #f0f0f0;
+  }

@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 import group from './Components/Assests/group.png';
 import Community from './Components/Community/Community';
 import Checkout from './Pages/Checkout';
+import UserProfile from './Pages/UserProfile';
 
 function App() {
   const [results, setResults] = useState([]);
@@ -90,6 +91,7 @@ function App() {
             <Route path=':productId' element={<Product/>}/>
         </Route>
         <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/userprofile' element={<UserProfile/>}/>
         <Route path='/cart' element={<CartItems/>}/>
         <Route path='/login' element={<LoginSignup/>}/>
         <Route path='/community' element={<Community/>} />
