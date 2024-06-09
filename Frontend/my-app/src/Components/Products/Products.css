@@ -1,0 +1,8 @@
+.card-container {
+    display: flex;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 10px;
+}
