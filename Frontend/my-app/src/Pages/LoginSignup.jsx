@@ -6,8 +6,7 @@ export const LoginSignup = () => {
   const [state,setState] = useState("Login");
   const [formData, setFormData] = useState({
     name:"",
-    phone:"",
-    //isAdmin:"",
+    phone:"",    
     street:"",
     apartment:"",
     zip:"",
@@ -125,7 +124,6 @@ const signup = async () => {
           <div className="loginsignup-fields">
             {state==="Sign Up"?<div className='signup-container'><input name='name' value={formData.name} onChange={changeHandler} type="text" maxLength={"12"} minLength={"8"} placeholder='Your Name' />
             <input name='phone' value={formData.phone} onChange={changeHandler} type="text" placeholder='Your Phone' />
-           {/*  <input name='isAdmin' value={formData.isAdmin} onChange={changeHandler} type="text" placeholder='Admin Code' /> */}
             <input name='street' value={formData.street} onChange={changeHandler} type="text" placeholder='Street' />
             <input name='apartment' value={formData.apartment} onChange={changeHandler} type="text" placeholder='Apartment' />
             <input name='zip' value={formData.zip} onChange={changeHandler} type="text" placeholder='Zio Code' />

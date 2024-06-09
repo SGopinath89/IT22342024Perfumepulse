@@ -17,10 +17,6 @@ const userSchema =  mongoose.Schema({
         type:String,
         required: true,
     },
-    isAdmin: {
-        type: Boolean,
-        default: false,
-    },
     street: {
         type: String,
         default: ''
@@ -38,6 +34,10 @@ const userSchema =  mongoose.Schema({
         default: ''
     },
     country: {
+        type: String,
+        default: ''
+    },
+    profilePhoto: {
         type: String,
         default: ''
     }
