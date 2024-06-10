@@ -31,3 +31,21 @@
   .order-details th {
     background-color: #f0f0f0;
   }
+
+  .order-details tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  .order-details button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .order-details button:hover {
+    background-color: #c82333;
+  }
