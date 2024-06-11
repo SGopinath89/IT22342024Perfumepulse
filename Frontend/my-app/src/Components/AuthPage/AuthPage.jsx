@@ -3,7 +3,8 @@ import React from 'react';
 import "./AuthPage.css"
 
 const AuthPage = (props) => {
-    const token = localStorage.getItem('auth-token')
+    const token = localStorage.getItem('auth-token');
+    const user = localStorage.getItem('user-name')
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ const AuthPage = (props) => {
         <div className="form-subtitle">Set a username to get started</div>
         <div className="auth">
           <div className="auth-label">Username</div>
-          <input className="auth-input" name="username" /><br />
+          <input className="auth-input" name="username" value={user} readOnly/><br />
           <button className="auth-button" type="submit">Enter</button>
         </div>
       </form>
