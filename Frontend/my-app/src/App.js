@@ -16,6 +16,7 @@ import group from './Components/Assests/group.png';
 import Community from './Components/Community/Community';
 import Checkout from './Pages/Checkout';
 import UserProfile from './Pages/UserProfile';
+import FilterProducts from './Pages/FilterProducts'
 
 function App() {
   const [results, setResults] = useState([]);
@@ -95,6 +96,7 @@ function App() {
         <Route path='/cart' element={<CartItems/>}/>
         <Route path='/login' element={<LoginSignup/>}/>
         <Route path='/community' element={<Community/>} />
+        <Route path='/filterproducts' element={<FilterProducts/>}/>
       </Routes>
       <Link to="/community">
           <img onClick={handleClick} src={group} alt="Group" className={`group-image ${animate ? 'animated' : ''}`} />

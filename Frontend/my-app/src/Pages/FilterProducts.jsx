@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import FiltersideBar from '../Components/FilterSideBar/FiltersideBar'
+import FilterSideBar from '../Components/FilterSideBar/FilterSideBar'
 import Item from '../Components/Item/Item'
 import Products from '../Components/Products/Products';
 
@@ -26,7 +26,7 @@ const FilterProducts = () => {
 
         //Appling selected filter
         if (selected) {
-            FilterProducts = filterProducts.filter(
+            filteredProducts = filteredProducts.filter(
                 ({ category, brand, price }) =>
                     category === selected ||
                     brand === selected ||
@@ -34,7 +34,7 @@ const FilterProducts = () => {
             );
         }
 
-        return filterProducts.map(
+        return filteredProducts.map(
             (item, i) => (
                 <Item
                  key={i}
@@ -52,7 +52,7 @@ const FilterProducts = () => {
 
      return (
         <div classname='displayproducts' >
-            <FiltersideBar handleChange={handleChange} />
+            <FilterSideBar handleChange={handleChange} />
             <Products result={result}/>
         </div>
     ) 
