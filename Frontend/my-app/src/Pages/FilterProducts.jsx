@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import FilterSideBar from '../Components/FilterSideBar/FilterSideBar'
 import Item from '../Components/Item/Item'
 import Products from '../Components/Products/Products';
+import './CSS/FilterProducts.css';
 
 
 const FilterProducts = () => {
