@@ -3,7 +3,7 @@ import "./Products.css";
 const Products = ({ result }) => {
     return (
         <>
-            <section classname="card-container">{result}</section>
+            <section className="card-container">{result}</section>
         </>
     );
 };

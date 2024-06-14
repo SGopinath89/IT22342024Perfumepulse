@@ -52,7 +52,7 @@ const FilterProducts = () => {
       const result = filteredData(selectedCategory);
 
      return (
-        <div classname='displayproducts' >
+        <div className='displayproducts' >
             <FilterSideBar handleChange={handleChange} />
             <Products result={result}/>
         </div>
