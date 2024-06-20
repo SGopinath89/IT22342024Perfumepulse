@@ -45,7 +45,32 @@ const Profile = ({ userData }) => {
     }
   };
 
-  
+  const handleDeleteComment = async (commentId) => {
+    const confirmed = window.confirm('Are you sure you want to delete this comment?');
+
+    if (confirmed) {
+      try {
+        const authToken = localStorage.getItem('auth-token');
+        const response = await fetch(`http://localhost:5000/api/v1/comments/${commentId}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to delete comment');
+        }
+
+        // Remove the deleted comment from the userComments state
+        setUserComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
+        alert("Comment deleted successfully");
+      } catch (error) {
+        console.error('Error deleting comment:', error);
+        alert(error.message);
+      }
+    }
+  };
 
   
 
