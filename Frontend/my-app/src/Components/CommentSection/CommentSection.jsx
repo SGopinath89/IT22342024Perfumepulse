@@ -62,7 +62,7 @@ const CommentSection = ({ productId }) => {
 
     return (
         <div className='comment-section'>
-            <h2>User Thoughts <span className='count'>({commentCount} comments)</span></h2>
+            <h2>Customer Thoughts <span className='count'><i>({commentCount} comments)</i ></span></h2>
             <div className='comment-list'>
                 {showAllComments ? (
                     comments.map(comment => (
