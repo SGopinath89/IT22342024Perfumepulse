@@ -72,7 +72,36 @@ const Profile = ({ userData }) => {
     }
   };
 
-  
+  const handleUpdateComment = async () => {
+    try {
+      const authToken = localStorage.getItem('auth-token');
+      const response = await fetch(`http://localhost:5000/api/v1/comments/${editingCommentId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ content: newCommentContent }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update comment');
+      }
+
+      const updatedComment = await response.json();
+      setUserComments(prevComments =>
+        prevComments.map(comment =>
+          comment._id === editingCommentId ? updatedComment.data : comment
+        )
+      );
+      setEditingCommentId(null);
+      setNewCommentContent('');
+      alert('Comment updated successfully');
+    } catch (error) {
+      console.error('Error updating comment:', error);
+      alert(error.message);
+    }
+  };
 
 
 
