@@ -78,4 +78,80 @@
   .button-container .remove-account-button:hover {
     background-color: #c82333;
   }
+
+
+  .user-comments {
+    margin-top: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  
+  .user-comments h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .user-comments ul {
+    list-style-type: none;
+    padding: 0;
+    
+  }
+  
+  .user-comments li {
+    margin-bottom: 15px;
+    
+  }
+  
+  .user-comments p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .user-comments button {
+    background-color: #ff6961;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 60px;
+    border-radius: 5px;
+  }
+  
+  .user-comments .update{
+    background-color: #239d48;
+    margin-bottom: 5px;
+  }
+  
+  .user-comments .update:hover{
+    background-color: #1b6e34;
+  }
+  
+  .user-comments .save {
+    background-color: #3d51e4;
+    margin-bottom: 5px;
+  }
+  
+  .user-comments .save:hover {
+    background-color: #243be6;
+  }
+  
+  .user-comments button:hover {
+    background-color: #d1483e;
+  }
+  
+  .user-comments .editinput {
+    width: 100%;
+  }
+  
   
