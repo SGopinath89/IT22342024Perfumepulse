@@ -135,9 +135,92 @@ const Profile = ({ userData }) => {
     }
   };
 
+  return (
+    <div>
+      <div className="profile">
+        <h2>User Details</h2>
+        <img src={`http://localhost:5000/${userData.profilePhoto}`} alt="User Profile" className="profile-photo" />
+        <table>
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>{userData.name}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td>{userData.email}</td>
+            </tr>
+            <tr>
+              <th>Phone:</th>
+              <td>{userData.phone}</td>
+            </tr>
+            <tr>
+              <th>Address:</th>
+              <td>{userData.street}, {userData.apartment}, {userData.city}, {userData.zip}, {userData.country}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="button-container">
+          <Link to={`/edit-profile/${userData.id}`}>
+            <button>Edit Your Profile</button>
+          </Link>
+          <button onClick={handleRemoveAccount} className="remove-account-button">Remove Account</button>
+        </div>
+      </div>
+      <div className="user-comments">
+        <h3>Your Comments</h3>
+        <table className='ctable'>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product Name</th>
+              <th>Comment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody className='tbody'>
+            
+            {userComments.map((comment, index) => (
+              <tr key={comment._id}>
+                <td>{index + 1}</td>
+                <td>{comment.product.name}</td>
+                <td>
+                  {editingCommentId === comment._id ? (
+                    <input
+                      className='editinput'
+                      type="text"
+                      value={newCommentContent}
+                      onChange={(e) => setNewCommentContent(e.target.value)}
+                    />
+                  ) : (
+                    comment.content
+                  )}
+                </td>
+                <td>
+                  {editingCommentId === comment._id ? (
+                    <>
+                      <button className='save' onClick={handleUpdateComment}>Save</button>
+                      <button className='cancel' onClick={() => setEditingCommentId(null)}>Cancel</button>
+                    </>
+                  ) : (
+                    <>
+                      <button className='update' onClick={() => {
+                        setEditingCommentId(comment._id);
+                        setNewCommentContent(comment.content);
+                      }}>Update</button>
+                      <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 
 
-  
+};
 
-
-}
+export default Profile;
