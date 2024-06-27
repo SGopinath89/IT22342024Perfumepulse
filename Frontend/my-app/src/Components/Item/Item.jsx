@@ -107,7 +107,7 @@ function Item(props) {
       <p>{props.name}</p>
       <div className="item-prices">
         <div className="item-brand"><i>{props.brand}</i></div>
-        <div className="item-price-new">${props.price}</div>
+        <div className="item-price-new">Rs.{props.price}</div>
         
       </div>
       <div className="reaction">

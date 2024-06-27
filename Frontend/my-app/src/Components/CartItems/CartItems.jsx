@@ -75,9 +75,9 @@ const CartItems = () => {
                             <div className="cartitems-format cartitems-format-main">
                                 <img src={product.image} alt="" className='carticon-product-icon' />
                                 <p>{product.name}</p>
-                                <p>${product.price}</p>
+                                <p>Rs.{product.price}</p>
                                 <button className='cartitems-quantity'>{cartItems[product.id]}</button>
-                                <p>${product.price * cartItems[product.id]}</p>
+                                <p>Rs.{product.price * cartItems[product.id]}</p>
                                 <img
                                     src={remove_icon}
                                     onClick={() => {
@@ -100,7 +100,7 @@ const CartItems = () => {
                     <div>
                         <div className="cartitems-total-item">
                             <p>Subtotal</p>
-                            <p>${getTotalCartAmount()}</p>
+                            <p>RS.{getTotalCartAmount()}</p>
                         </div>
                         <hr />
                         <div className="cartitems-total-item">
@@ -110,7 +110,7 @@ const CartItems = () => {
                         <hr />
                         <div className="cartitems-total-item">
                             <h3>Total</h3>
-                            <h3>${getTotalCartAmount()}</h3>
+                            <h3>Rs.{getTotalCartAmount()}</h3>
                         </div>
                     </div>
                     {isAuthenticated && orderItems.length > 0 ? (

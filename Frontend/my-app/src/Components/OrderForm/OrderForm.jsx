@@ -135,13 +135,13 @@ const OrderForm=()=>{
                                 <tr key={index}>
                                     <td>{item.product}</td>
                                     <td>{item.name}</td>
-                                    <td>${item.price}</td>
+                                    <td>Rs.{item.price}</td>
                                     <td>{item.quantity}</td>
                                 </tr>
                             ))}
                             <tr>
                                 <td colSpan="3"><strong>Total</strong></td>
-                                <td><strong>${getTotalCartAmount()}</strong></td>
+                                <td><strong>Rs.{getTotalCartAmount()}</strong></td>
                             </tr>
                         </tbody>
                     </table>

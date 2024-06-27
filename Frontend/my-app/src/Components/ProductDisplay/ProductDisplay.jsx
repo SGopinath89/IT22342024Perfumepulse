@@ -50,7 +50,7 @@ const ProductDisplay = (props) =>{
                     {product.brand}
                 </div>
                 <div className="productdiplay-right-price-new">
-                ${product.price}
+                Rs.{product.price}
                 </div>
             </div>
             <div className="productdisplay-right-description">
