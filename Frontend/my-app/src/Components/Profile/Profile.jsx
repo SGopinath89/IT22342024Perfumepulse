@@ -104,5 +104,40 @@ const Profile = ({ userData }) => {
   };
 
 
+  const handleRemoveAccount = async () => {
+    const confirmed = window.confirm('Are you sure you want to remove this account?');
+
+    if (confirmed) {
+      try {
+        const authToken = localStorage.getItem('auth-token');
+        const response = await fetch(`http://localhost:5000/api/v1/users/${userData.id}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to delete account');
+        }
+
+        // Clear local storage and redirect to login page
+        localStorage.removeItem('auth-token');
+        localStorage.removeItem('user-id');
+        localStorage.removeItem('user-name');
+        setUserName('');
+        alert("Successfully Removed Your Account")
+        window.location.replace('/');
+      } catch (error) {
+        console.error('Error deleting account:', error);
+        alert(error.message);
+      }
+    }
+  };
+
+
+
+  
+
 
 }
