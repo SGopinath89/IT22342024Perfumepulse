@@ -102,7 +102,21 @@ router.get(`/search`, async (req, res) => {
     }
 });
 
-
+router.get('/:id', async (req, res) => {
+    const product = await Product.findById(req.params.id)
+      .populate('likes', '_id')
+      .populate('unlikes', '_id');
+  
+    if (!product) {
+      return res.status(500).json({ success: false });
+    }
+  
+    res.send({
+      ...product.toObject(),
+      likesCount: product.likes.length,
+      unlikesCount: product.unlikes.length,
+    });
+  });
 
 
 
@@ -231,6 +245,23 @@ router.get(`/get/count`, async(req, res) =>{
         productCount: productCount
     });
 }) 
+
+  // Get Likes and Dislikes for a Product
+  router.get('/:id/likes-dislikes', async (req, res) => {
+    try {
+      const product = await Product.findById(req.params.id);
+      if (!product) {
+        return res.status(404).json({ success: false, message: 'Product not found' });
+      }
+  
+      const likes = product.likes || 0;
+      const dislikes = product.dislikes || 0;
+  
+      res.status(200).json({ likes, dislikes });
+    } catch (error) {
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+  });
 
 // Endpoint to like a product
 router.post('/:id/like', async (req, res) => {
