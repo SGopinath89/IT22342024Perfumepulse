@@ -1,10 +1,37 @@
 import React, { useEffect, useState } from 'react';
+import Profile from '../Components/Profile/Profile'
 import './CSS/UserProfile.css'
 import OrderedItems from '../Components/OrderedItems/OrderedItems';
 import Swal from 'sweetalert2';
 
 const UserProfile = () => {
+    const [userData, setUserData] = useState(null);
     const [userOrders, setUserOrders] = useState([]);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+          try {
+            const authToken = localStorage.getItem('auth-token');
+            const response = await fetch(`http://localhost:5000/api/v1/users/profile/${localStorage.getItem('user-id')}`, {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            });
+    
+            if (!response.ok) {
+              throw new Error('Failed to fetch user data');
+            }
+            const userData = await response.json();
+            setUserData(userData);
+          } catch (error) {
+            console.error('Error fetching user data:', error);
+            alert(error.message);
+          }
+        };
+    
+        fetchUserData();
+      }, []);
+    
 
     useEffect(() => {
         const fetchUserOrders = async () => {
@@ -68,7 +95,7 @@ const UserProfile = () => {
   return (
     <div className='user-profile-container'>
         <div className="user-details">
-            {/* In here, User Details Should be Displayed Using External Component */}
+            {userData && <Profile userData={userData} />}
         </div>
         <div className="order-details">
             <h2>Orders</h2>

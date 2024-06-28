@@ -1,3 +1,33 @@
+
+.user-profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.user-details {
+  width: 45%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  
+  margin-bottom: 20px;
+  background: none;
+}
+
+.user-details h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.user-details p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
 .order-details {
     height: 60vh; /* Set specific height */
     padding: 20px;
@@ -48,4 +78,11 @@
 
   .order-details button:hover {
     background-color: #c82333;
+  }
+
+  @media (max-width: 768px) {
+    .user-details,
+    .order-details {
+      width: 100%;
+    }
   }
