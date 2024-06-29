@@ -185,7 +185,7 @@ router.post(`/`, uploadOptions.single('image'), async (req, res) =>{
     if(!product){
         return res.status(500).send('The product cannot be saved!')
     }
-        res.send(product);
+        res.send({ success: true, product});
 })
 
 //Update Product
