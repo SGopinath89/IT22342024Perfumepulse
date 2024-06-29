@@ -1,62 +1,53 @@
-import React, {useEffect, useState} from 'react'
-import FilterSideBar from '../Components/FilterSideBar/FilterSideBar'
-import Item from '../Components/Item/Item'
-import Products from '../Components/Products/Products';
+import React, { useEffect, useState } from 'react';
+import FilterSideBar from '../Components/FilterSideBar/FilterSideBar';
+import Item from '../Components/Item/Item';
 import './CSS/FilterProducts.css';
 
-
 const FilterProducts = () => {
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    const [all_product, setAll_Product] = useState([]);
+    const [filters, setFilters] = useState({ category: '', brand: '', minPrice: '', maxPrice: '' });
+    const [allProducts, setAllProducts] = useState([]);
 
-      useEffect(() => {
+    useEffect(() => {
         fetch("http://localhost:5000/api/v1/products/")
-         .then((response) => response.json())
-         .then((data) => setAll_Product(data));
-      }, []);  
+            .then((response) => response.json())
+            .then((data) => setAllProducts(data))
+            .catch((error) => console.error('Error fetching products:', error));
+    }, []);
 
-      //------------ Radio Filtering --------------
-      const handleChange = (event) => {
-        setSelectedCategory(event.target.value);
-      };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
+    };
 
-      function filteredData(selected) {
-        let filteredProducts = all_product;
+    const filteredData = () => {
+        return allProducts.filter(product => {
+            const matchCategory = filters.category ? product.category === filters.category : true;
+            const matchBrand = filters.brand ? product.brand === filters.brand : true;
+            const matchMinPrice = filters.minPrice ? product.price >= filters.minPrice : true;
+            const matchMaxPrice = filters.maxPrice ? product.price <= filters.maxPrice : true;
+            return matchCategory && matchBrand && matchMinPrice && matchMaxPrice;
+        });
+    };
 
+    const result = filteredData().map((item, i) => (
+        <Item
+            key={i}
+            id={item.id}
+            name={item.name}
+            image={item.image}
+            price={item.price}
+            brand={item.brand}
+        />
+    ));
 
-
-        //Appling selected filter
-        if (selected) {
-            filteredProducts = filteredProducts.filter(
-                ({ category, brand, price }) =>
-                    category === selected ||
-                    brand === selected ||
-                    price === selected
-            );
-        }
-
-        return filteredProducts.map(
-            (item, i) => (
-                <Item
-                 key={i}
-                 id={item.id}
-                 name={item.name}
-                 image={item.image}
-                 price={item.price}
-                 brand={item.brand}
-                 />
-            )
-        );
-      }
-
-      const result = filteredData(selectedCategory);
-
-     return (
-        <div className='displayproducts' >
-            <FilterSideBar handleChange={handleChange} />
-            <Products result={result}/>
+    return (
+        <div className='displayproducts'>
+            <FilterSideBar handleChange={handleChange} filters={filters} />
+            <div className="products-container">
+                {result}
+            </div>
         </div>
-    ) 
-}
+    );
+};
 
-export default FilterProducts
+export default FilterProducts;
