@@ -102,7 +102,19 @@ export const LoginSignup = () => {
     }
   };
 
+  const onChangeHandler = (e) => {
+    changeHandler(e); // Call the existing changeHandler function
+    loginchangeHandler(e); // Call the new loginChangeHandler function
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (state === "Login") {
+      login();
+    } else {
+      signup();
+    }
+  };
 
 
 
