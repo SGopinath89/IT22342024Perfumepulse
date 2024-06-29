@@ -21,6 +21,19 @@ export const LoginSignup = () => {
     email: ""
   });
 
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    if (name === 'profilePhoto') {
+      setFormData({ ...formData, profilePhoto: e.target.files[0] }); // Handle file input
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const loginchangeHandler = (e) => {
+    setLoginFormData({ ...loginformData, [e.target.name]: e.target.value });
+  };
+
 
 
 
