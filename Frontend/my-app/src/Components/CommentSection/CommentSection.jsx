@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CommentSection.css';
+import delete_img from '../Assests/delete.png'; 
 
 const CommentSection = ({ productId }) => {
     const [comments, setComments] = useState([]);
@@ -62,14 +63,18 @@ const CommentSection = ({ productId }) => {
 
     return (
         <div className='comment-section'>
-            <h2>Customer Thoughts <span className='count'><i>({commentCount} comments)</i ></span></h2>
+            <h2>Customer Thoughts <span className='count'>({commentCount} comments)</span></h2>
             <div className='comment-list'>
                 {showAllComments ? (
                     comments.map(comment => (
                         <div key={comment._id} className='comment' style={{ backgroundColor: getCommentBackgroundColor(comment.category) }}>
                             <div className="image-name">
-                                <img src={`http://localhost:5000/${comment.user.profilePhoto}`} alt={`${comment.user.name}'s profile`} className='profile-photo' />
-                                <p><strong>{comment.user.name}</strong></p>
+                                <img
+                                    src={comment.user ? `http://localhost:5000/${comment.user.profilePhoto}` : delete_img}
+                                    alt={`${comment.user?.name || 'Deleted User'}'s profile`}
+                                    className='profile-photo'
+                                />
+                                <p><strong>{comment.user?.name || 'Deleted User'}</strong></p>
                             </div>
                             <p>{comment.content}</p>
                             <p className='comment-date'>{new Date(comment.dateCreated).toLocaleString()}</p>
@@ -78,8 +83,14 @@ const CommentSection = ({ productId }) => {
                 ) : (
                     comments.slice(0, 3).map(comment => (
                         <div key={comment._id} className='comment' style={{ backgroundColor: getCommentBackgroundColor(comment.category) }}>
-                            <img src={`http://localhost:5000/${comment.user.profilePhoto}`} alt={`${comment.user.name}'s profile`} className='profile-photo' />
-                            <p><strong>{comment.user.name}</strong></p>
+                            <div className="image-name">
+                                <img
+                                    src={comment.user ? `http://localhost:5000/${comment.user.profilePhoto}` : delete_img}
+                                    alt={`${comment.user?.name || 'Deleted User'}'s profile`}
+                                    className='profile-photo'
+                                />
+                                <p><strong>{comment.user?.name || 'Deleted User'}</strong></p>
+                            </div>
                             <p>{comment.content}</p>
                             <p className='comment-date'>{new Date(comment.dateCreated).toLocaleString()}</p>
                         </div>
