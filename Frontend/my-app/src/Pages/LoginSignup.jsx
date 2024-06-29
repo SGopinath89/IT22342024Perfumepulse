@@ -75,6 +75,34 @@ export const LoginSignup = () => {
     }
   };
 
+  const signup = async () => {
+    console.log("Signup Function Executed", formData);
+
+    const formDataToSend = new FormData(); // Use FormData for file upload
+    for (const key in formData) {
+      formDataToSend.append(key, formData[key]);
+    }
+
+    let responseData;
+    await fetch('http://localhost:5000/api/v1/users/register', {
+      method: 'POST',
+      body: formDataToSend,
+    })
+      .then((response) => response.json())
+      .then((data) => responseData = data)
+      .catch((error) => {
+        console.error('Fetch error:', error);
+        alert('An error occurred during signup. Please try again later.');
+      });
+
+    if (responseData && responseData.success) {
+      window.location.replace("/login");
+    } else {
+      alert(responseData.errors);
+    }
+  };
+
+
 
 
 
