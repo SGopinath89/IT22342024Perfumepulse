@@ -116,17 +116,42 @@ export const LoginSignup = () => {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
+  return (
+    <div className='loginsignup'>
+      <div className="loginsignup-container">
+        <h1>{state}</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="loginsignup-fields">
+            {state === "Sign Up" ? (
+              <div className='signup-container'>
+                <input name='name' value={formData.name} onChange={changeHandler} type="text" maxLength={"12"} placeholder='Your Name' />
+                <input name='phone' value={formData.phone} onChange={changeHandler} type="text" placeholder='Your Phone' />
+                <input name='street' value={formData.street} onChange={changeHandler} type="text" placeholder='Street' />
+                <input name='apartment' value={formData.apartment} onChange={changeHandler} type="text" placeholder='Apartment' />
+                <input name='zip' value={formData.zip} onChange={changeHandler} type="text" placeholder='Zip Code' />
+                <input name='city' value={formData.city} onChange={changeHandler} type="text" placeholder='Your City' />
+                <input name='country' value={formData.country} onChange={changeHandler} type="text" placeholder='Your Country' />
+                <input name='profilePhoto' onChange={changeHandler} type="file" placeholder='Profile Photo' />
+              </div>
+            ) : null}
+            <input name='email' value={formData.email} onChange={onChangeHandler} type="email" placeholder='Email Address' />
+            <input name='password' value={formData.password} onChange={onChangeHandler} type="password" placeholder="Password" />
+          </div>
+          <button type="submit">Continue</button>
+          {state === "Sign Up" ? (
+            <p className='loginsignup-login'>Already have an account <span onClick={() => { setState("Login") }}>Login here</span></p>
+          ) : (
+            <p className='loginsignup-login'>Create an account <span onClick={() => { setState("Sign Up") }}>Register here</span></p>
+          )}
+          <div className="loginsignup-agree">
+            <input type="checkbox" required />
+            <p>By continuing, I agree to the terms of use & privacy policy.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
 
 
 
