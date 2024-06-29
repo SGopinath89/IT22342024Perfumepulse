@@ -41,7 +41,7 @@ const Profile = ({ userData }) => {
       setUserComments(data.data);
     } catch (error) {
       console.error('Error fetching user comments:', error);
-      alert(error.message);
+      
     }
   };
 
