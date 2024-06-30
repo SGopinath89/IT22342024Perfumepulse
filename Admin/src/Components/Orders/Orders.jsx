@@ -106,7 +106,7 @@ const Orders = () => {
                     )}
                   </ul>
                 </td>
-                <td>${order.totalPrice?.toFixed(2)}</td> 
+                <td>Rs.{order.totalPrice?.toFixed(2)}</td> 
                 <td><img onClick={()=>{removeOrder(order._id)}} className='listproduct-remove-icon' src={cross_icon} alt="" /></td> 
               </tr>
             ))

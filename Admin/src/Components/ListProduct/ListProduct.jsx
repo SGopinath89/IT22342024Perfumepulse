@@ -72,7 +72,7 @@ const ListProduct = () => {
                         return <><div key={index} className="listproduct-format-main listproduct-format">
                                 <img src={product.image} alt="" className="listproduct-product-icon" />
                                 <p>{product.name}</p>
-                                <p>${product.price}</p>
+                                <p>Rs.{product.price}</p>
                                 <p>{product.brand}</p>
                                 <p>{product.category}</p>
                                 <img onClick={()=>{remove_product(product.id)}} className='listproduct-remove-icon' src={cross_icon} alt="" />
