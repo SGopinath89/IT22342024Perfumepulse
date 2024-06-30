@@ -1,11 +1,11 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './OrderForm.css';
 
-const OrderForm=()=>{
+const OrderForm = () => {
     const location = useLocation();
-    const { orderItems } = location.state || { orderItems: [] }; // Default to empty array if orderItems is undefined
+    const { orderItems, totalWithDiscount } = location.state || { orderItems: [], totalWithDiscount: 0 }; // Default to empty array if orderItems is undefined
     const [shippingAddress1, setShippingAddress1] = useState('');
     const [shippingAddress2, setShippingAddress2] = useState('');
     const [city, setCity] = useState('');
@@ -18,10 +18,6 @@ const OrderForm=()=>{
     useEffect(() => {
         setUser(localStorage.getItem('user-id'));
     }, []);
-
-    const getTotalCartAmount = () => {
-        return orderItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +33,7 @@ const OrderForm=()=>{
             zip,
             country,
             phone,
-            status:"Pending" ,
+            status: "Pending",
             user,
         };
 
@@ -141,7 +137,7 @@ const OrderForm=()=>{
                             ))}
                             <tr>
                                 <td colSpan="3"><strong>Total</strong></td>
-                                <td><strong>Rs.{getTotalCartAmount()}</strong></td>
+                                <td><strong>Rs.{totalWithDiscount}</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -150,21 +146,6 @@ const OrderForm=()=>{
             </form>
         </div>
     );
-
 };
 
-
 export default OrderForm;
-
-
-
-
-
-
-
-
-
-
-
-
-

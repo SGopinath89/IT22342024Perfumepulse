@@ -3,14 +3,14 @@ import './CartItems.css';
 import { ShopContext } from '../../Context/ShopContext';
 import remove_icon from '../Assests/cart_cross_icon.png';
 import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const CartItems = () => {
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
-    const [orderItems, setOrderItems] = useState([]); 
+    const [orderItems, setOrderItems] = useState([]);
     const [promoCode, setPromoCode] = useState('');
     const [discount, setDiscount] = useState(0);
-    const isAuthenticated = localStorage.getItem('auth-token'); 
+    const isAuthenticated = localStorage.getItem('auth-token');
     const navigate = useNavigate();
 
     const removeFromOrder = (productId) => {
@@ -18,7 +18,6 @@ const CartItems = () => {
     };
 
     useEffect(() => {
-        
         setOrderItems(Object.keys(cartItems).map(itemId => {
             const product = all_product.find(p => p.id === itemId);
             return {
@@ -32,32 +31,33 @@ const CartItems = () => {
 
     const handleProceedToCheckout = () => {
         if (isAuthenticated && orderItems.length > 0) {
-          navigate('/checkout', { state: { orderItems } });
+            const totalWithDiscount = getTotalWithDiscount();
+            navigate('/checkout', { state: { orderItems, discount, totalWithDiscount } });
         } else {
-          if (!isAuthenticated) {
-            Swal.fire({
-              title: "You Should Login First!",
-              text: "Please login to proceed to checkout.",
-              icon: "warning"
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.replace("/login");
-              }
-            });
-          } else {
-            Swal.fire({
-              title: "Cart is empty!",
-              text: "Please add at least one product to place an order.",
-              icon: "warning"
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.replace("/");
-              }
-            });
-          }
+            if (!isAuthenticated) {
+                Swal.fire({
+                    title: "You Should Login First!",
+                    text: "Please login to proceed to checkout.",
+                    icon: "warning"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.replace("/login");
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: "Cart is empty!",
+                    text: "Please add at least one product to place an order.",
+                    icon: "warning"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.replace("/");
+                    }
+                });
+            }
         }
-      };
-    
+    };
+
     const handlePromoCodeSubmit = () => {
         if (promoCode === 'perfumepulse') {
             Swal.fire({
@@ -79,7 +79,7 @@ const CartItems = () => {
     const getTotalWithDiscount = () => {
         const total = getTotalCartAmount();
         return (total - (total * discount)).toFixed(2);
-    }
+    };
 
     return (
         <div className='cartitems'>
@@ -106,7 +106,7 @@ const CartItems = () => {
                                     src={remove_icon}
                                     onClick={() => {
                                         removeFromCart(product.id);
-                                        removeFromOrder(product.id); 
+                                        removeFromOrder(product.id);
                                     }}
                                     className="cartitems-remove-icon"
                                     alt=""
@@ -142,24 +142,15 @@ const CartItems = () => {
                             <h3>Rs.{getTotalWithDiscount()}</h3>
                         </div>
                     </div>
-                    {isAuthenticated && orderItems.length > 0 ? (
-                        <Link
-                            to="/checkout"
-                            state={{ orderItems }}
-                        >
-                            <button>PROCEED TO CHECKOUT</button>
-                        </Link>
-                    ) : (
-                        <button onClick={handleProceedToCheckout}>
-                            PROCEED TO CHECKOUT
-                        </button>
-                    )}
+                    <button onClick={handleProceedToCheckout}>
+                        PROCEED TO CHECKOUT
+                    </button>
                 </div>
                 <div className="cartitems-poromocode">
                     <p>If you have a promocode, Enter it here</p>
                     <div className="cartitems-promobox">
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             placeholder='promocode'
                             value={promoCode}
                             onChange={(e) => setPromoCode(e.target.value)}
