@@ -15,7 +15,7 @@ router.post("/authenticate",async(req,res)=>{
                 first_name:username
             },
             {
-                headers:{"private-key":"019644ea-aede-4ff9-b05b-a6d4d25ee48f"}
+                headers:{"private-key":"a4e2b091-34a6-4c91-b078-48a74e046de8"}
             }
         );
         return res.status(response.status).json(response.data);
