@@ -7,8 +7,10 @@ import Swal from 'sweetalert2'
 
 const CartItems = () => {
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
-    const [orderItems, setOrderItems] = useState([]); // State to store order items
-    const isAuthenticated = localStorage.getItem('auth-token'); // Check if user is authenticated
+    const [orderItems, setOrderItems] = useState([]); 
+    const [promoCode, setPromoCode] = useState('');
+    const [discount, setDiscount] = useState(0);
+    const isAuthenticated = localStorage.getItem('auth-token'); 
     const navigate = useNavigate();
 
     const removeFromOrder = (productId) => {
@@ -16,7 +18,7 @@ const CartItems = () => {
     };
 
     useEffect(() => {
-        // Watch for changes in cartItems and update orderItems accordingly
+        
         setOrderItems(Object.keys(cartItems).map(itemId => {
             const product = all_product.find(p => p.id === itemId);
             return {
@@ -56,6 +58,28 @@ const CartItems = () => {
         }
       };
     
+    const handlePromoCodeSubmit = () => {
+        if (promoCode === 'perfumepulse') {
+            Swal.fire({
+                title: "Congratulations!",
+                text: "You have received a 10% discount.",
+                icon: "success"
+            });
+            setDiscount(0.1);
+        } else {
+            Swal.fire({
+                title: "Invalid Promo Code",
+                text: "Please enter a valid promo code.",
+                icon: "error"
+            });
+            setDiscount(0);
+        }
+    };
+
+    const getTotalWithDiscount = () => {
+        const total = getTotalCartAmount();
+        return (total - (total * discount)).toFixed(2);
+    }
 
     return (
         <div className='cartitems'>
@@ -82,7 +106,7 @@ const CartItems = () => {
                                     src={remove_icon}
                                     onClick={() => {
                                         removeFromCart(product.id);
-                                        removeFromOrder(product.id); // Remove order item from state
+                                        removeFromOrder(product.id); 
                                     }}
                                     className="cartitems-remove-icon"
                                     alt=""
@@ -109,8 +133,13 @@ const CartItems = () => {
                         </div>
                         <hr />
                         <div className="cartitems-total-item">
+                            <p>Discount</p>
+                            <p>{discount > 0 ? `-${(discount * 100)}%` : 'No discount applied'}</p>
+                        </div>
+                        <hr />
+                        <div className="cartitems-total-item">
                             <h3>Total</h3>
-                            <h3>Rs.{getTotalCartAmount()}</h3>
+                            <h3>Rs.{getTotalWithDiscount()}</h3>
                         </div>
                     </div>
                     {isAuthenticated && orderItems.length > 0 ? (
@@ -129,8 +158,13 @@ const CartItems = () => {
                 <div className="cartitems-poromocode">
                     <p>If you have a promocode, Enter it here</p>
                     <div className="cartitems-promobox">
-                        <input type="text" placeholder='promocode' />
-                        <button>Submit</button>
+                        <input 
+                            type="text" 
+                            placeholder='promocode'
+                            value={promoCode}
+                            onChange={(e) => setPromoCode(e.target.value)}
+                        />
+                        <button onClick={handlePromoCodeSubmit}>Submit</button>
                     </div>
                 </div>
             </div>
