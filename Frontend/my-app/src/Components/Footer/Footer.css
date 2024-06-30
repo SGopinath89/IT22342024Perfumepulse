@@ -15,9 +15,10 @@
 }
 
 .footer-logo p {
-    color: #383838;
+    color: #4c384f;
     font-size: 46px;
     font-weight: 700;
+    font-family: 'Lobster', cursive;
 }
 
 .footer-logo img{
