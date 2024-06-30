@@ -21,7 +21,6 @@ app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 app.use(errorHandler);
 
 
-
 //Routes
 const categoriesRoutes = require('./routers/categories');
 const productsRoutes = require('./routers/products');
@@ -29,6 +28,8 @@ const usersRoutes = require('./routers/users');
 const ordersRoutes = require('./routers/orders');
 const commentsRoutes = require('./routers/comments');
 const communityRoutes = require('./routers/community')
+
+
 
 const api = process.env.API_URL;
 
@@ -38,16 +39,6 @@ app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/orders`, ordersRoutes);
 app.use(`${api}/comments`, commentsRoutes);
 app.use(`${api}/community`, communityRoutes);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -64,17 +55,7 @@ mongoose.connect(process.env.CONNECTION_STRING, {
     console.log(err);
 })
 
-
-
-
-
-
-
-
-
-
-
-const port =5000;
+const port = process.env.PORT
 
 //Server
 app.listen(port, ()=>{
