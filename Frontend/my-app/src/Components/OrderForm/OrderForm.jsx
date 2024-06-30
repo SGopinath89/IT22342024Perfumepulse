@@ -35,6 +35,7 @@ const OrderForm = () => {
             phone,
             status: "Pending",
             user,
+            totalWithDiscount
         };
 
         try {
