@@ -4,6 +4,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const upload = require('../helpers/upload');
+const Service = require('../Services/GenericService')
+const name = "User"
+const mongoose = require('mongoose')
 
 
 //Get users
