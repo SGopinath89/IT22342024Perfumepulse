@@ -55,6 +55,28 @@ const ListUsers = () => {
     }
     };
 
+    const count = async () => {
+        const token = localStorage.getItem('token');
+        await fetch('http://localhost:5000/api/v1/users/get/count', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            method: "GET",
+        } )
+            .then((res) => res.json())
+            .then((data) => {
+                setUserCount(data);
+            })
+            .catch((error) => {
+                console.error('Error fetching product count:', error);
+            });
+    };
+
+    useEffect(() => {
+        count();
+    }, []);
+
     return (
         <div className='list-users'>
             <h1>All Users List</h1>
