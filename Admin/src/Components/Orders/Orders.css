@@ -20,6 +20,16 @@ body {
     text-align: center;
     color: #333;
   }
+
+  .count{
+    color: red;
+    font-weight: 600;
+  }
+  .ordercount{
+      margin-bottom: 40px;
+      font-size: 18px;
+      text-align: center;
+  }
   
   .orders-table {
     width: 100%;
@@ -80,3 +90,8 @@ body {
     color: red;
   }
   
+  @media(max-width:1280px){
+    .orders-container{
+      width: 85%;
+    }
+  }
