@@ -5,7 +5,7 @@
   <p align="center">
 PerfumePulse is a comprehensive platform designed to provide users to buy perfumes with detailed information about various perfumes. This project aims to help users find,buy and review perfumes, discover new fragrances, and manage their perfume collections effectively.
     <br />
-    <a href=""><strong>Explore the API docs »</strong></a> 
+    <a href="https://documenter.getpostman.com/view/34113703/2sA3dviXbE#b5908938-a70f-4926-b3f5-831320657a10"><strong>Explore the API docs »</strong></a> 
     <br />
     <br />
   
