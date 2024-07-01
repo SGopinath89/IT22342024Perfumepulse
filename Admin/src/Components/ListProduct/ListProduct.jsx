@@ -42,7 +42,7 @@ const ListProduct = () => {
         await fetch('http://localhost:5000/api/v1/products/get/count')
             .then((res) => res.json())
             .then((data) => {
-                setProductCount(data.productCount);
+                setProductCount(data);
             })
             .catch((error) => {
                 console.error('Error fetching product count:', error);
