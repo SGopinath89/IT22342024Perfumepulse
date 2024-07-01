@@ -4,6 +4,7 @@ import cross_icon from '../../assets/cross_icon.png';
 
 const ListUsers = () => {
     const [users, setUsers] = useState([]);
+    const [userCount,setUserCount]=useState(0);
     const isAuthenticated = localStorage.getItem('token');
     
     // Fetch users data from backend
@@ -19,7 +20,7 @@ const ListUsers = () => {
                 });
                 const data = await response.json();
                 if (data.data) {
-                    setUsers(data.data); // Assuming the users data is returned in the format { success: true, data: [users] }
+                    setUsers(data.data); 
                 } else {
                     setUsers([]);
                 }
@@ -80,6 +81,7 @@ const ListUsers = () => {
     return (
         <div className='list-users'>
             <h1>All Users List</h1>
+            <p className='usercount'><i><span className='count'>{userCount}</span> Users are with PerfumePulse!!!</i></p>
             <div className="user-details-header">
                 <p>Photo</p>
                 <p>Name</p>

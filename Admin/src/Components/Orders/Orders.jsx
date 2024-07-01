@@ -16,11 +16,11 @@ const Orders = () => {
         throw new Error(`Network response was not ok: ${response.statusText}`);
       }
       const data = await response.json();
-     // alert('Fetched Orders: ' + JSON.stringify(data)); // Alert instead of console.log
+     
       setOrders(data);
     } catch (error) {
       setError(error.message);
-      alert('Error fetching orders: ' + error.message); // Alert instead of console.error
+      alert('Error fetching orders: ' + error.message); 
     } finally {
       setLoading(false);
     }
@@ -58,9 +58,9 @@ const Orders = () => {
         headers: {
           Accept: 'application/json',
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'Application/json'
+          'Content-Type': 'Application/json',
         },
-        body: JSON.stringify({_id:_id})
+        body: JSON.stringify({ _id })
       });
       await fetchOrders(); 
   };
@@ -93,8 +93,7 @@ const Orders = () => {
             <th>User ID</th>
             <th>Username</th>
             <th>Product ID</th>
-            
-            <th>Quantities</th>
+             <th>Quantities</th>
             <th>Total Price</th>
             <th>Remove Order</th>
           </tr>
