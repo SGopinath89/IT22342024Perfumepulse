@@ -2,8 +2,11 @@ const {Order} = require('../models/order');
 const express = require('express');
 const router = express.Router();
 const {OrderItem} = require('../models/order-item');
+const Service = require('../Services/GenericService')
+const name = "Order"
+const mongoose = require('mongoose')
 
-
+//Get Orders
 router.get('/', async (req, res)=>{
     const orderList = await Order.find().populate('user', 'name').sort({'dateOrdered': -1});
 
@@ -13,6 +16,7 @@ router.get('/', async (req, res)=>{
     res.send(orderList);
 })
 
+//Get Orders alone with Product names
 router.get('/getorders', async (req, res) => {
     try {
       const orders = await Order.find()
@@ -35,7 +39,7 @@ router.get('/getorders', async (req, res) => {
     }
   });
 
-
+//Get Orders by ID
 router.get('/:id', async (req, res)=>{
     const order = await Order.findById(req.params.id)
     .populate('user', 'name')
@@ -50,6 +54,7 @@ router.get('/:id', async (req, res)=>{
     res.send(order);
 })
 
+//Post a new Order
 router.post('/', async (req, res)=>{
     const orderItemsIds = Promise.all(req.body.orderItems.map(async (orderItem) =>{
         let newOrderItem = new OrderItem({
@@ -93,6 +98,7 @@ router.post('/', async (req, res)=>{
 })
 
 
+//Update Existing Order
 router.put('/:id', async (req, res)=>{
     const order = await Order.findByIdAndUpdate(
         req.params.id,
@@ -108,7 +114,7 @@ router.put('/:id', async (req, res)=>{
     res.send(order);
 })
 
-
+//Delete an Order
 router.delete('/:id', (req, res)=>{
     Order.findByIdAndDelete(req.params.id).then(async order =>{
         if(order){
@@ -127,7 +133,7 @@ router.delete('/:id', (req, res)=>{
 
 
 
-
+//Get total Sales
 router.get(`/get/totalsales`, async(req, res) =>{
     const totalSales = await Order.aggregate([
         { $group: {_id: null , totalsales : { $sum : '$totalPrice'}}}
@@ -141,18 +147,14 @@ router.get(`/get/totalsales`, async(req, res) =>{
     });
 }) 
 
+//Get total Orders count
+router.get('/get/count',(req,res)=>{
+    Service.getCount(res, Order,name).catch((error)=>{
+        res.status(500).send(error+"Server Error")
+    })
+})
 
-router.get(`/get/count`, async(req, res) =>{
-    const orderCount = await Order.countDocuments()
-
-    if (!orderCount){
-        res.status(500).json({success: false})
-    }
-    res.send({
-        orderCount: orderCount
-    });
-}) 
-
+//Get Count of Orders of particular user
 router.get(`/get/userorders/:userid`, async (req, res) =>{
     const userOrderList = await Order.find({user: req.params.userid}).populate({ 
         path: 'orderItems', populate: {
