@@ -17,6 +17,17 @@
     margin-bottom: 20px;
 }
 
+.count{
+    color: red;
+    font-weight: 600;
+}
+
+.usercount{
+    margin-bottom: 40px;
+    font-size: 18px;
+    text-align: center;
+}
+
 .user-details-header {
     display: flex;
     justify-content: space-between;
@@ -25,6 +36,7 @@
     background-color: #e9ecef; /* Light gray background for header */
     border-radius: 6px;
     margin-bottom: 10px;
+    height: 5vh;
 }
 
 .user-details-header p {
@@ -49,9 +61,14 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
 }
 
+.user-details-list :hover{
+    background-color: #f8f9fa; 
+   
+}
+
 .user-details .user-photo {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%; /* Round user photo */
     object-fit: cover;
 }
