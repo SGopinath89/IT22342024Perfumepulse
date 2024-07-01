@@ -14,13 +14,10 @@ router.get('/', (req,res) => {
 })
 
 //Get user by ID
-router.get(`/:id`, async (req, res) =>{
-    const user = await User.findById(req.params.id).select('-passwordHash');
-
-    if(!user){
-        res.status(500).json({success: false, message: 'The user with the given ID was not found'})
-    }
-    res.send(user);
+router.get('/:id',(req,res)=>{
+    Service.getById(req,res,User,name).catch((error) => {
+        res.status(500).send(error+" Server Error")
+   })
 })
 
 router.get('/profile/:id', async (req, res) => {
