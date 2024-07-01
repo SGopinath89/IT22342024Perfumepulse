@@ -21,4 +21,11 @@ router.get('/:id',(req,res)=>{
 })
 
 
+//Delete an User
+router.delete('/:id',(req,res)=>{
+    Service.deleteById(req,res,User,name).catch((error) => {
+        res.status(500).send(error+" Server Error")
+    })
+})
+
 module.exports = router;
