@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './CSS/LoginSignup.css';
 
 export const LoginSignup = () => {
@@ -48,30 +50,20 @@ export const LoginSignup = () => {
       });
 
       if (!response.ok) {
-        // Handle HTTP errors
         throw new Error('Network response was not ok');
       }
 
       const responseData = await response.json();
 
-      localStorage.setItem('auth-token', responseData.token);
-      localStorage.setItem('user-id', responseData.user._id);
-      localStorage.setItem('user-name', responseData.user.name);
-
-      window.location.replace("/");
-
-      if (responseData && responseData.success) {
         localStorage.setItem('auth-token', responseData.token);
         localStorage.setItem('user-id', responseData.user._id);
+        localStorage.setItem('user-name', responseData.user.name);
+        toast.success("Login successful!");
         window.location.replace("/");
-      } else {
-        // Handle unsuccessful login
-        //alert(responseData ? responseData.errors || "Login failed" : "Login failed");
-      }
+
     } catch (error) {
-      // Handle fetch errors
       console.error('Fetch error:', error);
-      alert('An error occurred during login. Please try again later.');
+      toast.error('Invalid Email or Password.');
     }
   };
 
@@ -83,22 +75,23 @@ export const LoginSignup = () => {
       formDataToSend.append(key, formData[key]);
     }
 
-    let responseData;
-    await fetch('http://localhost:5000/api/v1/users/register', {
-      method: 'POST',
-      body: formDataToSend,
-    })
-      .then((response) => response.json())
-      .then((data) => responseData = data)
-      .catch((error) => {
-        console.error('Fetch error:', error);
-        alert('An error occurred during signup. Please try again later.');
+    try {
+      const response = await fetch('http://localhost:5000/api/v1/users/register', {
+        method: 'POST',
+        body: formDataToSend,
       });
 
-    if (responseData && responseData.success) {
-      window.location.replace("/login");
-    } else {
-      alert(responseData.errors);
+      const responseData = await response.json();
+
+      if (responseData && responseData.success) {
+        toast.success("Signup successful!");
+        window.location.replace("/login");
+      } else {
+        toast.error(responseData.errors || "Signup failed");
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      toast.error('An error occurred during signup. Please try again later.');
     }
   };
 
@@ -118,6 +111,7 @@ export const LoginSignup = () => {
 
   return (
     <div className='loginsignup'>
+      <ToastContainer />
       <div className="loginsignup-container">
         <h1>{state}</h1>
         <form onSubmit={handleSubmit}>
@@ -152,7 +146,5 @@ export const LoginSignup = () => {
     </div>
   );
 }
-
-
 
 export default LoginSignup;
