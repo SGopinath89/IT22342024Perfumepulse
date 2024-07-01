@@ -1,12 +1,15 @@
-const {Product} = require('../models/product');
+const { Product } = require('../models/product');
 const { User } = require('../models/user');
 const express = require('express');
-const {Category} = require('../models/category');
+const { Category } = require('../models/category');
 const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
+const authJwt = require('../helpers/jwt'); // Corrected import
+const Service = require('../Services/GenericService')
+const name = "Product"
 
-
+//Handle File Uploads
 const FILE_TYPE_MAP = {
     'image/png': 'png',
     'image/jpeg': 'jpeg',
@@ -14,34 +17,34 @@ const FILE_TYPE_MAP = {
 }
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb){
+    destination: function (req, file, cb) {
         const isValid = FILE_TYPE_MAP[file.mimetype];
         let uploadError = new Error('Invalid image type');
 
-        if(isValid){
+        if (isValid) {
             uploadError = null
         }
 
         cb(uploadError, 'public/uploads')
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const fileName = file.originalname.split(' ').join('-');
         const extension = FILE_TYPE_MAP[file.mimetype];
         cb(null, `${fileName}-${Date.now()}.${extension}`)
     }
 })
 
-const uploadOptions = multer({ storage: storage})
+const uploadOptions = multer({ storage: storage })
 
-router.get('/allproducts', async (req, res)=>{
-    let products =await Product.find({});
+router.get('/allproducts', async (req, res) => {
+    let products = await Product.find({});
     console.log("All Products Fetched");
     res.json(products);
 })
 
 //creating end point for newCollection data
-router.get('/newcollections', async (req, res)=>{
-    let products =await Product.find({});
+router.get('/newcollections', async (req, res) => {
+    let products = await Product.find({});
     let newCollection = products.slice(1).slice(-8)
     console.log("All Products Fetched");
     res.json(newCollection);
@@ -59,23 +62,21 @@ router.get('/popular', async (req, res) => {
     }
 });
 
-//get product
-router.get(`/`, async(req, res) =>{
-    //const productList = await Product.find().select('name image -_id'); //if you want whole data just remove ".select('name');"
-
+//Get products by catergories
+router.get(`/`, async (req, res) => {
     let filter = {};
 
-     if(req.query.categories){
-        filter = {category: req.query.categories.split(',')}
-    } 
+    if (req.query.categories) {
+        filter = { category: req.query.categories.split(',') }
+    }
 
     const productList = await Product.find(filter).populate('category');
 
-    if (!productList  || productList.length === 0){
-        res.status(500).json({success: false})
+    if (!productList || productList.length === 0) {
+        res.status(500).json({ success: false })
     }
     res.send(productList);
-}) 
+})
 
 router.get(`/search`, async (req, res) => {
     try {
@@ -102,6 +103,7 @@ router.get(`/search`, async (req, res) => {
     }
 });
 
+//Get Products by ID
 router.get('/:id', async (req, res) => {
     const product = await Product.findById(req.params.id)
       .populate('likes', '_id')
@@ -117,49 +119,11 @@ router.get('/:id', async (req, res) => {
       unlikesCount: product.unlikes.length,
     });
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-router.get(`/:id`, async(req, res) =>{
-    
-    const product = await Product.findById(req.params.id).populate('category');
-
-    if (!product){
-        res.status(500).json({success: false})
-    }
-    res.send(product);
-}) 
-
-//endpoint for post a new product
-router.post(`/`, uploadOptions.single('image'), async (req, res) =>{
-    
-   
-
+  
+//Add new Product
+router.post(`/`, uploadOptions.single('image'), async (req, res) => {
     const file = req.file;
-    if(!file){
+    if (!file) {
         return res.status(400).send('No image in the request')
     }
 
@@ -182,20 +146,19 @@ router.post(`/`, uploadOptions.single('image'), async (req, res) =>{
 
     product = await product.save();
 
-    if(!product){
+    if (!product) {
         return res.status(500).send('The product cannot be saved!')
     }
-        res.send({ success: true, product});
+    res.send({ success: true, product });
 })
 
-//Update Product
-router.put('/:id', async (req, res)=>{
-    if(!mongoose.isValidObjectId(req.params.id)){
+//Update Existing Product
+router.put('/:id', async (req, res) => {
+    if (!mongoose.isValidObjectId(req.params.id)) {
         res.status(400).send('Invalid Product Id')
     }
-    
 
-    const product= await Product.findByIdAndUpdate(
+    const product = await Product.findByIdAndUpdate(
         req.params.id,
         {
             name: req.body.name,
@@ -210,111 +173,43 @@ router.put('/:id', async (req, res)=>{
             numReviews: req.body.numReviews,
             isFeatured: req.body.isFeatured,
         },
-        {new: true}
+        { new: true }
     )
 
-    if(!product){
+    if (!product) {
         return res.status(500).send('The product cannot be updated!')
     }
     res.send(product);
 })
 
-router.delete('/:id', (req, res)=>{
-    Product.findByIdAndDelete(req.params.id).then(product =>{
-        if(product){
-            return res.status(200).json({success: true , message: 'Deleted'})
-        } else {
-            return res.status(404).json({success: false , message: 'Canceled'})
-        }
-    }).catch(err=>{
-        return res.status(500).json({success: false, error: err})
+//Delete a Product
+router.delete('/:id',(req,res)=>{
+    Service.deleteById(req,res,Product,name).catch((error) => {
+        res.status(500).send(error+" Server Error")
     })
 })
 
 
+//Get Total Products Count
+router.get('/get/count', (req,res) => {
+    Service.getCount(res, Product, name).catch((error) => {
+        res.status(500).send(error+ " Server Error")
+    })  
+})
 
+//Get Count of Featured products
+router.get(`/get/featured/:count`, async (req, res) => {
+    const count = req.params.count ? req.params.count : 0
+    const products = await Product.find({ isFeatured: true }).limit(+count)
 
+    if (!products) {
+        res.status(500).json({ success: false })
+    }
+    res.send(products);
+})
 
-router.get(`/get/count`, async(req, res) =>{
-    const productCount = await Product.countDocuments()
-
-    if (!productCount){
-        res.status(500).json({success: false})
-    }
-    res.send({
-        productCount: productCount
-    });
-}) 
-
-  // Get Likes and Dislikes for a Product
-  router.get('/:id/likes-dislikes', async (req, res) => {
-    try {
-      const product = await Product.findById(req.params.id);
-      if (!product) {
-        return res.status(404).json({ success: false, message: 'Product not found' });
-      }
-  
-      const likes = product.likes || 0;
-      const dislikes = product.dislikes || 0;
-  
-      res.status(200).json({ likes, dislikes });
-    } catch (error) {
-      res.status(500).json({ success: false, message: 'Internal Server Error' });
-    }
-  });
-
-// Endpoint to like a product
-router.post('/:id/like', async (req, res) => {
-    const userId = req.body.userId;
-  
-    if (!mongoose.isValidObjectId(req.params.id) || !mongoose.isValidObjectId(userId)) {
-      return res.status(400).send('Invalid Product Id or User Id');
-    }
-  
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return res.status(404).send('Product not found');
-    }
-  
-    // Add user to likes array if not already liked
-    if (!product.likes.includes(userId)) {
-      product.likes.push(userId);
-      product.unlikes.pull(userId); // Remove user from unlikes if exists
-    } else {
-      product.likes.pull(userId); // If user already liked, remove like
-    }
-  
-    await product.save();
-    res.send(product);
-  });
-  
-  // Endpoint to unlike a product
-  router.post('/:id/unlike', async (req, res) => {
-    const userId = req.body.userId;
-  
-    if (!mongoose.isValidObjectId(req.params.id) || !mongoose.isValidObjectId(userId)) {
-      return res.status(400).send('Invalid Product Id or User Id');
-    }
-  
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return res.status(404).send('Product not found');
-    }
-  
-    // Add user to unlikes array if not already unliked
-    if (!product.unlikes.includes(userId)) {
-      product.unlikes.push(userId);
-      product.likes.pull(userId); // Remove user from likes if exists
-    } else {
-      product.unlikes.pull(userId); // If user already unliked, remove unlike
-    }
-  
-    await product.save();
-    res.send(product);
-  });
-
-
-  router.put(
+//Update Gallery Images
+router.put(
     '/galleryimages/:id',
     uploadOptions.array('images', 10),
     async (req, res) => {
@@ -347,5 +242,93 @@ router.post('/:id/like', async (req, res) => {
     }
 )
 
+// New endpoint to fetch product details by IDs
+router.post('/details', async (req, res) => {
+    try {
+        const { ids } = req.body;
+
+        if (!ids || !Array.isArray(ids)) {
+            return res.status(400).send('Invalid input: ids should be an array');
+        }
+
+        const products = await Product.find({ '_id': { $in: ids } });
+
+        if (!products || products.length === 0) {
+            return res.status(404).json({ success: false, message: 'No products found' });
+        }
+
+        res.status(200).json(products);
+    } catch (error) {
+        console.error('Error fetching product details:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+})
+
+// Endpoint to like a product
+router.post('/:id/like', async (req, res) => {
+    const userId = req.body.userId;
+  
+    if (!mongoose.isValidObjectId(req.params.id) || !mongoose.isValidObjectId(userId)) {
+      return res.status(400).send('Invalid Product Id or User Id');
+    }
+  
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).send('Product not found');
+    }
+  
+    // Add user to likes array if not already liked
+    if (!product.likes.includes(userId)) {
+      product.likes.push(userId);
+      product.unlikes.pull(userId); // Remove user from unlikes if exists
+    } else {
+      product.likes.pull(userId); // If user already liked, remove like
+    }
+  
+    await product.save();
+    res.send(product);
+});
+  
+// Endpoint to unlike a product
+router.post('/:id/unlike', async (req, res) => {
+    const userId = req.body.userId;
+  
+    if (!mongoose.isValidObjectId(req.params.id) || !mongoose.isValidObjectId(userId)) {
+      return res.status(400).send('Invalid Product Id or User Id');
+    }
+  
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).send('Product not found');
+    }
+  
+    // Add user to unlikes array if not already unliked
+    if (!product.unlikes.includes(userId)) {
+      product.unlikes.push(userId);
+      product.likes.pull(userId); // Remove user from likes if exists
+    } else {
+      product.unlikes.pull(userId); // If user already unliked, remove unlike
+    }
+  
+    await product.save();
+    res.send(product);
+});
+
+// Get Likes and Dislikes for a Product
+router.get('/:id/likes-dislikes', async (req, res) => {
+    try {
+      const product = await Product.findById(req.params.id);
+      if (!product) {
+        return res.status(404).json({ success: false, message: 'Product not found' });
+      }
+  
+      const likes = product.likes || 0;
+      const dislikes = product.dislikes || 0;
+  
+      res.status(200).json({ likes, dislikes });
+    } catch (error) {
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+  });
 
 module.exports = router;
