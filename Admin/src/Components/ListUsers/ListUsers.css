@@ -1,14 +1,11 @@
-/* ListUsers.css */
-
 .list-users {
     width: 100%;
-    max-width: 1200px; /* Limiting width for better readability */
+    max-width: 1200px; 
     margin: 20px auto;
     padding: 20px;
-    background-color: #f8f9fa; /* Light gray background */
+    background-color: #f8f9fa; 
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .list-users h1 {
@@ -33,7 +30,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #e9ecef; /* Light gray background for header */
+    background-color: #e9ecef; 
     border-radius: 6px;
     margin-bottom: 10px;
     height: 5vh;
@@ -58,7 +55,7 @@
     background-color: white;
     border-radius: 6px;
     margin-bottom: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
 }
 
 .user-details-list :hover{
@@ -69,7 +66,7 @@
 .user-details .user-photo {
     width: 80px;
     height: 80px;
-    border-radius: 50%; /* Round user photo */
+    border-radius: 50%; 
     object-fit: cover;
 }
 
@@ -81,11 +78,11 @@
     cursor: pointer;
     width: 20px;
     height: auto;
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    transition: transform 0.3s ease; 
 }
 
 .remove-icon:hover {
-    transform: scale(1.2); /* Scale up on hover */
+    transform: scale(1.2); 
 }
 
 @media(max-width: 768px) {

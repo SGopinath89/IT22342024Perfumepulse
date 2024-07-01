@@ -5,7 +5,7 @@
     gap: 20px;
     width: auto;
     background: white;
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    overflow-x: auto; 
     padding-left: 80px;
     background-color: rgb(108, 249, 176);
 }
@@ -25,8 +25,8 @@
     .sidebar {
         padding: 30px 0px;
         flex-direction: row;
-        justify-content: flex-start; /* Align items to the start */
-        overflow-x: auto; /* Enable horizontal scrolling if needed */
+        justify-content: flex-start; 
+        overflow-x: auto; 
     }
 
     .sidebar-item {

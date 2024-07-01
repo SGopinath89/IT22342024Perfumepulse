@@ -4,15 +4,10 @@ import cross_icon from '../../assets/cross_icon.png'
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const [orderCount, setOrderCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const isAuthenticated = localStorage.getItem('token');
-
-    if (!isAuthenticated) {
-        // Return null if user is not authenticated
-        return null;
-        
-    }
 
   const fetchOrders = async () => {
     try {
@@ -31,17 +26,29 @@ const Orders = () => {
     }
   };
 
+  const count = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:5000/api/v1/orders/get/count', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'GET',
+      });
+      const data = await response.json();
+      setOrderCount(data);
+    } catch (error) {
+      console.error('Error fetching product count:', error);
+    }
+  };
+
   useEffect(() => {
+    if (isAuthenticated) {
     fetchOrders();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+    count();
+    }
+  }, [isAuthenticated]); 
 
   const removeOrder = async (_id) => {
     const token = localStorage.getItem('token');
@@ -58,9 +65,26 @@ const Orders = () => {
       await fetchOrders(); 
   };
 
+  if (!isAuthenticated) {
+    return <div>Please log in to view your orders.</div>;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="orders-container">
       <h1>Orders</h1>
+      <p className="ordercount">
+        <i>
+          Total <span className="count">{orderCount}</span> Orders have been Recieved!
+        </i>
+      </p>
       <table className="orders-table">
         <thead>
           <tr>
@@ -86,9 +110,8 @@ const Orders = () => {
                  <td>
                   <ul>
                     {order.orderItems?.length > 0 ? (
-                      order.orderItems.map(item => (
-                        <li key={item._id}>{item._id}</li>
-                      ))
+                      order.orderItems.map(item =>
+                        <li key={item._id}>{item._id}</li>)
                     ) : (
                       <li><span style={{color:'red'}}><i>No products</i></span></li>
                     )}
@@ -98,16 +121,17 @@ const Orders = () => {
                 <td>
                   <ul>
                     {order.orderItems?.length > 0 ? (
-                      order.orderItems.map(item => (
-                        <li key={item._id}>{item.quantity}</li>
-                      ))
+                      order.orderItems.map(item => 
+                        <li key={item._id}>{item.quantity}</li>)
                     ) : (
                       <li><span style={{color:'red'}}><i>No quantities</i></span></li>
                     )}
                   </ul>
                 </td>
                 <td>Rs.{order.totalPrice?.toFixed(2)}</td> 
-                <td><img onClick={()=>{removeOrder(order._id)}} className='listproduct-remove-icon' src={cross_icon} alt="" /></td> 
+                <td><img onClick={()=>{removeOrder(order._id);
+              }} 
+              className='listproduct-remove-icon' src={cross_icon} alt="" /></td> 
               </tr>
             ))
           ) : (

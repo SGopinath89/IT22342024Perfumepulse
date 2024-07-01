@@ -1,9 +1,5 @@
-//import React, { useState } from 'react'
 import './AddProduct.css'
 import upload_area from '../../assets/upload_area.svg'
-
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar';
@@ -93,15 +89,13 @@ const AddProduct = () => {
           <textarea name="richDescription" rows="8" value={formData.richDescription} onChange={handleChange} placeholder='Type here...'/>
         </div>
 
-        {/*Image*/}
+        
         
         <div className="addproduct-itemfield">         
           <p>Image</p>
          <input type="file" accept="image/*" onChange={handleImageChange} required />
 
-          {/* <label htmlFor="file-input">
-                <img src={image?URL.createObjectURL(image):upload_area} className='addproduct-thumnail-img' alt="" />
-          </label> */}
+          
             <input onChange={handleImageChange} type="file" name="image" id='file-input' hidden/>
 
         </div>
@@ -109,7 +103,7 @@ const AddProduct = () => {
         
         <div className="addproduct-itemfield">   
           <p>Brand</p>
-          {/* <input type="text" name="brand" value={formData.brand} onChange={handleChange} /> */}
+         
 
           <select value={formData.brand} onChange={handleChange} name="brand" className='addproduct-selector'>
                 <option value="Chanel">Chanel</option>
@@ -133,7 +127,6 @@ const AddProduct = () => {
         
         <div className="addproduct-itemfield">
           <p>Category</p>
-          {/* <input type="text" name="category" value={formData.category} onChange={handleChange} /> */}
         
             <select value={formData.category} onChange={handleChange} name="category" className='addproduct-selector'>
                 <option value="bloombliss">Bloom Bliss</option>

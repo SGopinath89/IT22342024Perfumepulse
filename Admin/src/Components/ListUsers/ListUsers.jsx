@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ListUsers.css'; // Import CSS file for styling
+import './ListUsers.css'; 
 import cross_icon from '../../assets/cross_icon.png';
 
 const ListUsers = () => {

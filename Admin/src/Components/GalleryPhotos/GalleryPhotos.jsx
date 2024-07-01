@@ -60,7 +60,7 @@ const GalleryPhotos = () => {
     <div className='gallery-photos'>
       <h2>Update Gallery Photos</h2>
       <input type="text" placeholder="Enter Product ID" value={productId} onChange={handleProductIdChange} />
-      {/* Conditionally render the file input based on the presence of productId */}
+     
       {productId && (
         <>
           <input type="file" accept="image/*" multiple onChange={handleImageChange} />
