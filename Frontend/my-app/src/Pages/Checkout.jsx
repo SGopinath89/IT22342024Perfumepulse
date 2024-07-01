@@ -1,5 +1,4 @@
 import React from 'react';
-//import './CSS/Checkout.css';
 import OrderForm from '../Components/OrderForm/OrderForm';
 import {useLocation} from 'react-router-dom';
 
@@ -11,16 +10,10 @@ const Checkout=()=>{
     return(
         <div className="checkout">
             <div className="order-form-container">
-                <OrderForm orderItems={OrderForm} cartItems={cartItems} />
+                <OrderForm orderItems={orderItems} cartItems={cartItems} />
             </div>
         </div>
     )
-    
-
-
-
 }
 
 export default Checkout;
-
-

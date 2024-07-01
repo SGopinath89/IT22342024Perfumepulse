@@ -1,4 +1,3 @@
-/* Base styles */
 .item {
   width: auto;
   max-width: 500px;
@@ -83,7 +82,6 @@
   height: 14px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 992px) {
   .item {
     max-width: auto;

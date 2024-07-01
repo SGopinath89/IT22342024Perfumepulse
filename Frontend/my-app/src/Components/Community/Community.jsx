@@ -11,8 +11,6 @@ function Community(){
     }else{
         return <ChatsPage user={user}/>
     }
-
 }
-
 
 export default Community;

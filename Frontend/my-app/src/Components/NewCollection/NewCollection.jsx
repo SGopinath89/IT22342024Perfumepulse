@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import './NewCollection.css'
 import Item from '../Item/Item'
 
-
 const NewCollections=()=>{
     const [new_collection,setNewCollection]=useState([])
 
@@ -22,15 +21,8 @@ const NewCollections=()=>{
                     return <Item key={i} id={item.id} name={item.name} image={item.image} price={item.price} brand={item.brand}/>
                 })}
             </div>
-
         </div>
     )
-
 }
 
-
 export default NewCollections
-
-
-
-

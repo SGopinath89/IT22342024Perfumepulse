@@ -20,7 +20,7 @@ const Profile = ({ userData }) => {
     if (name) {
       setUserName(name);
     }
-    fetchUserComments(); // Call fetchUserComments when the component mounts
+    fetchUserComments(); 
   }, []);
 
   const fetchUserComments = async () => {
@@ -41,7 +41,7 @@ const Profile = ({ userData }) => {
       setUserComments(data.data);
     } catch (error) {
       console.error('Error fetching user comments:', error);
-      
+      //alert(error.message);
     }
   };
 
@@ -102,7 +102,6 @@ const Profile = ({ userData }) => {
       alert(error.message);
     }
   };
-
 
   const handleRemoveAccount = async () => {
     const confirmed = window.confirm('Are you sure you want to remove this account?');
@@ -219,8 +218,6 @@ const Profile = ({ userData }) => {
       </div>
     </div>
   );
-
-
 };
 
 export default Profile;

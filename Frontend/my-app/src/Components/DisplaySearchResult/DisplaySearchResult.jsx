@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Item from '../Item/Item'; // Import your Item component
+import Item from '../Item/Item'; 
 
 const DisplaySearchResult = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -9,7 +9,7 @@ const DisplaySearchResult = () => {
     useEffect(() => {
         const fetchSearchResults = async () => {
             try{
-                // Send a GET request to your backend API with the search query
+                
                 const response = await axios.get(`http://localhost:5000/api/v1/products/search?q=${searchQuery}`);
                 setSearchResults(response.data); // Update search results state with the fetched data
             } catch (error) {

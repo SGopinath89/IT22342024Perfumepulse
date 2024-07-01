@@ -79,7 +79,6 @@ const Navbar = () => {
         <li onClick={() => { setMenu("bloombliss"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/bloombliss">Bloom Bliss</Link>{menu === "bloombliss" ? <hr /> : null}</li>
         <li onClick={() => { setMenu("woodlandwonders"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/woodlandwonders">Woodland Wonders</Link>{menu === "woodlandwonders" ? <hr /> : null}</li>
         <li onClick={() => { setMenu("citruscharms"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/citruscharms">Citrus Charms</Link>{menu === "citruscharms" ? <hr /> : null}</li>
-        {/* <li onClick={() => { setMenu("community"); setMenuVisible(false); }}><Link style={{ textDecoration: "none" }} to="/community">Community</Link>{menu === "community" ? <hr /> : null}</li> */}
       </ul>
 
       <div className="nav-login-cart">

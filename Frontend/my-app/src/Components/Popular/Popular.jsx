@@ -2,16 +2,15 @@ import React , {useEffect, useState } from 'react'
 import './Popular.css'
 import Item from '../Item/Item'
 
-
 const Popular=()=>{
     const [popular,setPopular]=useState([])
-
 
     useEffect(()=>{
         fetch('http://localhost:5000/api/v1/products/popular')
         .then((response)=>response.json())
         .then((data)=>setPopular(data))
     },[])
+    
     return(
         <div className="popular">
             <h1>POPULAR NOW</h1>
@@ -24,13 +23,6 @@ const Popular=()=>{
             </div>
         </div>
     )
-
-
-
-
-
-
 }
 
 export default Popular
-

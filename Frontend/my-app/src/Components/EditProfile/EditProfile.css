@@ -1,108 +1,107 @@
 .edit-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f7f9fc;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f9fc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
   
-  .edit-profile h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
+.edit-profile h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.edit-profile form {
+  width: 100%;
+}
+
+.edit-profile table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.edit-profile td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.edit-profile label {
+  font-family: 'Arial', sans-serif;
+  color: #555;
+  font-weight: bold;
+  border: none;
+}
+
+.edit-profile input[type="password"],
+.edit-profile input[type="text"],
+.edit-profile input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile input[type="text"]:focus,
+.edit-profile input[type="email"]:focus {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.edit-profile input[type="text"]::placeholder,
+.edit-profile input[type="email"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.file{
+  width: 100%;
+}
+
+.edit-profile button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+}
+
+.edit-profile button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.edit-profile button:active {
+  background-color: #004080;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .edit-profile {
+    padding: 15px;
+    max-width: 90%;
   }
-  
+
   .edit-profile form {
     width: 100%;
   }
-  
-  .edit-profile table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .edit-profile td {
-    padding: 10px;
-    vertical-align: middle;
-  }
-  
-  .edit-profile label {
-    font-family: 'Arial', sans-serif;
-    color: #555;
-    font-weight: bold;
-    border: none;
-  }
-  
-  .edit-profile input[type="text"],
-  .edit-profile input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    background-color: #fff;
-    transition: all 0.3s ease-in-out;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .edit-profile input[type="text"]:focus,
-  .edit-profile input[type="email"]:focus {
-    border-color: #007bff;
-    background-color: #f0f8ff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
-    outline: none;
-  }
-  
-  .edit-profile input[type="text"]::placeholder,
-  .edit-profile input[type="email"]::placeholder {
-    color: #999;
-    font-style: italic;
-  }
-
-  .file{
-    width: 100%;
-  }
-  
-  .edit-profile button {
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease;
-    margin-top: 20px;
-    display: block;
-    width: 100%;
-  }
-  
-  .edit-profile button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-  }
-  
-  .edit-profile button:active {
-    background-color: #004080;
-    transform: translateY(0);
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .edit-profile {
-      padding: 15px;
-      max-width: 90%;
-    }
-  
-    .edit-profile form {
-      width: 100%;
-    }
-  }
-  
+}

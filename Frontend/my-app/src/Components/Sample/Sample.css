@@ -1,127 +1,116 @@
-/* Keyframe for fade-in animation */
 @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+.sample {
+  width: auto;
+  height: 80vh;
+  background-image: url('../Assests/samplebg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #f2f2f2;
+  background-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  justify-content: center;    
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.sample-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5%;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.sample-left .sample-moto p {
+  color: white;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.sample-left-left {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
   
-  /* Main container styles */
+.sample-left h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.sample-left p {
+  color: #fff;
+  font-size: 4.5rem;
+  font-weight: 700;
+}
+  
+.sample-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5%;
+}
+
+.sample-right img {
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
   .sample {
-    width: auto;
-    height: 80vh;
-    background-image: url('../Assests/samplebg.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: #f2f2f2;
-    
-    background-blend-mode: multiply;
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-    box-sizing: border-box;
-    padding: 20px;
-  }
-
-  /* Left container styles */
-  .sample-left {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-left: 5%;
-    line-height: 1.1;
-    color: #fff;
+    text-align: center;
   }
-  
-  .sample-left .sample-moto p {
-   
-    color: white;
-   
-    animation: fadeIn 2s ease-in-out;
-  }
-  
-  .sample-left-left {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
 
-  
-  .sample-left h2 {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
+  .sample-left, .sample-right {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
   }
-  
-  .sample-left p {
-    color: #fff;
-    font-size: 4.5rem;
-    font-weight: 700;
+
+  .sample-left {
+    padding-left: 0;
   }
-   
-  /* Right container styles */
-  .sample-right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 5%;
-  }
-  
+
   .sample-right img {
     width: 100%;
-    
-    animation: fadeIn 1s ease-in-out;
+    margin-left: 0;
   }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .sample {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .sample-left, .sample-right {
-      width: 100%;
-      padding: 0;
-      margin-bottom: 20px;
-    }
-  
-    .sample-left {
-      padding-left: 0;
-    }
-  
-    .sample-right img {
-      width: 100%;
-      margin-left: 0;
-    }
-  
-    .sample-left-left {
-      flex-direction: column;
-    }
-  
-    .sample-left-left input {
-      margin-right: 0;
-      margin-bottom: 10px;
-      width: 100%;
-    }
+
+  .sample-left-left {
+    flex-direction: column;
   }
-  
-  @media (min-width: 1024px) {
-    .sample-left h2 {
-      font-size: 2.5rem;
-    }
-  
-    .sample-left p {
-      font-size: 3rem;
-    }
-  
-    .sample-moto p {
-      font-size: 2rem;
-    }
+
+  .sample-left-left input {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
   }
+}
+
+@media (min-width: 1024px) {
+  .sample-left h2 {
+    font-size: 2.5rem;
+  }
+
+  .sample-left p {
+    font-size: 3rem;
+  }
+
+  .sample-moto p {
+    font-size: 2rem;
+  }
+}

@@ -47,8 +47,6 @@
     float: left;
 }
 
-
-
 .comment:hover {
     background: #d4d4d4;
 }
@@ -70,7 +68,6 @@
     color: #7a7a7a;
     text-align: right;
 }
-
 
 .view-all {
     display: block;
@@ -132,8 +129,6 @@
     transform: scale(1.05);
 }
 
-/* Responsive Design */
-
 @media (max-width: 768px) {
     .comment-section {
         padding: 20px;
@@ -152,12 +147,7 @@
     }
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
-
-
-

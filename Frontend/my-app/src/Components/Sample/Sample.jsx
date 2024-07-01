@@ -1,7 +1,6 @@
 import React from 'react'
 import './Sample.css'
 import sample_image from '../Assests/sample_image.png'
-import { SearchBar } from '../SearchBar/SearchBar'
 import Typical from 'react-typical'
 
 const Sample = () => {

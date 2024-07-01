@@ -11,10 +11,7 @@
 .navbar .nav-logo img{
     width: 80px;
     padding: 0px 0px 50px 0px;
-   
 }
-
-
 
 .nav-logo{
     display: flex;
@@ -30,7 +27,6 @@
     padding-right: 25px;
     font-family: 'Lobster', cursive;
     transition: color 0.3s ease-in-out;
-
 }
 
 .nav-logo img {
@@ -44,8 +40,8 @@
 }
 
 .nav-logo:hover p {
-    color: #ff4141;
-  }
+    color: #ff4141; 
+}
 
 .nav-menu{
     display: flex;
@@ -128,6 +124,168 @@
     cursor: pointer;
 }
 
+.welcome-message {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;   
+    color: #2c3e50;
+    margin-right: 40px;
+    padding: 0px 0px;
+    border-radius: 50px;
+    background-color: #ecf0f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    width: auto;
+    gap: 15px;
+    height: 6vh;
+    z-index: 999;
+  }
+
+.welcome-messagee {
+    z-index: 999;
+}
+
+.welcome-message img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding-left: 10px;
+}
+  
+.welcome-message:hover {
+    background-color: #bdc3c7;
+}
+  
+.green-dot {
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/*css for login title*/
+.tooltip-container {
+    position: relative;
+    display: inline-block; 
+  }
+
+.tooltip-container::after {
+    content: "Login";
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333; 
+    color: #fff; 
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000; 
+}
+  
+.tooltip-container:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*css for logout title*/
+.tooltip-container-logout {
+    position: relative;
+    display: inline-block; 
+}
+  
+.tooltip-container-logout::after {
+    content: "Logout";
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333; 
+    color: #fff; 
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000; 
+}
+  
+.tooltip-container-logout:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*css for cart title*/
+.tooltip-container-cart {
+    position: relative;
+    display: inline-block; 
+}
+  
+.tooltip-container-cart::after {
+    content: "Cart";
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333; 
+    color: #fff; 
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000; 
+}
+  
+.tooltip-container-cart:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media(max-width:800px){
+    .navbar{
+        padding: 10px 0px;
+    }
+    .nav-dropdown{
+        display: block;
+        width: 30px;
+        rotate: -90deg;
+        transition: 0.5s;
+    }
+    .nav-menu{
+        display: none;
+        height: 80px;
+        width: 100%;
+        position: absolute;
+        background-color: white;
+        justify-content: center;
+        top: 50px;
+    }
+    .nav-menu-visible {
+        display: flex;
+    }
+    .nav-dropdown.open{
+        transform: rotate(90deg);
+    }
+}
+
+@media(max-width:500px){
+    .navbar{
+        width: 8px 0px;
+        gap: 0;
+    }
+    .nav-logo{
+        transform: scale(0.8);
+    }
+}
+
 @media(max-width:1280px){
     .navbar{
         padding: 12px 10px;
@@ -178,170 +336,3 @@
         
     }
 }
-
-/*css for login title*/
-.tooltip-container {
-    position: relative;
-    display: inline-block; 
-  }
-  
- 
-  .tooltip-container::after {
-    content: "Login";
-    position: absolute;
-    bottom: 100%; 
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333; 
-    color: #fff; 
-    padding: 5px 10px;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s;
-    z-index: 1000; 
-  }
-  
-  .tooltip-container:hover::after {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  /*css for logout title*/
-  .tooltip-container-logout {
-    position: relative;
-    display: inline-block; 
-  }
-  
- 
-  .tooltip-container-logout::after {
-    content: "Logout";
-    position: absolute;
-    bottom: 100%; 
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333; 
-    color: #fff; 
-    padding: 5px 10px;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s;
-    z-index: 1000; 
-  }
-  
-  .tooltip-container-logout:hover::after {
-    opacity: 1;
-    visibility: visible;
-  }
-
-
-  /*css for cart title*/
-  .tooltip-container-cart {
-    position: relative;
-    display: inline-block; 
-  }
-  
- 
-  .tooltip-container-cart::after {
-    content: "Cart";
-    position: absolute;
-    bottom: 100%; 
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333; 
-    color: #fff; 
-    padding: 5px 10px;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s;
-    z-index: 1000; 
-  }
-  
-  .tooltip-container-cart:hover::after {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .welcome-message {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: bold;   
-    color: #2c3e50;
-    margin-right: 40px;
-    padding: 0px 0px;
-    border-radius: 50px;
-    background-color: #ecf0f1;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    width: auto;
-    gap: 15px;
-    height: 6vh;
-    z-index: 999;
-  }
-
-  .welcome-messagee {
-    z-index: 999;
-  }
-
-  .welcome-message img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    padding-left: 10px;
-  }
-  
-  .welcome-message:hover {
-    background-color: #bdc3c7;
-  }
-  
-  .green-dot {
-    height: 10px;
-    width: 10px;
-    background-color: green;
-    border-radius: 50%;
-    margin-right: 8px;
-  }
-
-@media(max-width:800px){
-    .navbar{
-        padding: 10px 0px;
-    }
-    .nav-dropdown{
-        display: block;
-        width: 30px;
-        rotate: -90deg;
-        transition: 0.5s;
-    }
-    .nav-menu{
-        display: none;
-        height: 80px;
-        width: 100%;
-        position: absolute;
-        background-color: white;
-        justify-content: center;
-        top: 50px;
-    }
-    .nav-menu-visible {
-        display: flex;
-    }
-    .nav-dropdown.open{
-        transform: rotate(90deg);
-    }
-}
-
-@media(max-width:500px){
-    .navbar{
-        width: 8px 0px;
-        gap: 0;
-    }
-    .nav-logo{
-        transform: scale(0.8);
-    }
-}
-

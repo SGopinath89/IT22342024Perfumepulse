@@ -46,7 +46,6 @@ function Item(props) {
         animation: false
       }).then((result) => {
         if (result.isConfirmed) {
-          // Redirect to login page
           window.location.href = '/login';
         }
       });
@@ -83,7 +82,6 @@ function Item(props) {
         animation: false
       }).then((result) => {
         if (result.isConfirmed) {
-          // Redirect to login page
           window.location.href = '/login';
         }
       });

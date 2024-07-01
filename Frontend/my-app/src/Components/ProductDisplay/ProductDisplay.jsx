@@ -17,7 +17,6 @@ const ProductDisplay = (props) =>{
         if (isAuthenticated) {
             addToCart(product.id);
         } else {
-            // Redirect to login page
             window.location.href = '/login';
         }
     };
@@ -66,10 +65,7 @@ const ProductDisplay = (props) =>{
                 <button onClick={handleAddToCart}>ADD TO CART</button>
             ) : (
                 <button onClick={() => window.location.href = '/login'}>LOGIN TO ADD TO CART</button>
-            )}
-            
-
-           
+            )}   
         </div>
 
         <div className="productdisplay-rich-description">
@@ -91,17 +87,4 @@ const ProductDisplay = (props) =>{
     )
 }
 
-export default ProductDisplay
-
-
-
-
-
-
-
-
-
-
-
-
-    
+export default ProductDisplay 
