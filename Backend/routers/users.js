@@ -28,4 +28,12 @@ router.delete('/:id',(req,res)=>{
     })
 })
 
+
+//getCount
+router.get('/get/count', (req,res) => {
+    Service.getCount(res, User, name).catch((error) => {
+        res.status(500).send(error+ " Server Error")
+    })  
+})
+
 module.exports = router;
