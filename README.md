@@ -148,7 +148,7 @@ Follow these steps to set up the project on your local machine:
     npm run dev
     ```
 
-This command will start the server, and you can access the application at `http://localhost:3000`.
+This command will start the server, and you can access the application at `http://localhost:5173`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
