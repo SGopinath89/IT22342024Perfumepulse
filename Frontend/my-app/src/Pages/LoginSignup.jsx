@@ -118,7 +118,7 @@ export const LoginSignup = () => {
           <div className="loginsignup-fields">
             {state === "Sign Up" ? (
               <div className='signup-container'>
-                <input name='name' value={formData.name} onChange={changeHandler} type="text" maxLength={"12"} placeholder='Your Name' />
+                <input name='name' value={formData.name} onChange={changeHandler} type="text" maxLength={"12"} placeholder='Your Name' title='Use `_` for spaces'/>
                 <input name='phone' value={formData.phone} onChange={changeHandler} type="text" placeholder='Your Phone' />
                 <input name='street' value={formData.street} onChange={changeHandler} type="text" placeholder='Street' />
                 <input name='apartment' value={formData.apartment} onChange={changeHandler} type="text" placeholder='Apartment' />

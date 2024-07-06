@@ -102,7 +102,7 @@ const EditProfile = () => {
                     <tbody>
                         <tr>
                             <td><label>Name:</label></td>
-                            <td><input type="text" maxLength={"12"} minLength={"8"} name="name" value={formData.name} onChange={handleChange} required /></td>
+                            <td><input type="text" maxLength={"12"} name="name" value={formData.name} onChange={handleChange} required /></td>
                         </tr>
                         <tr>
                             <td><label>Email:</label></td>
