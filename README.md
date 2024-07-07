@@ -105,11 +105,10 @@ Follow these steps to set up the project on your local machine:
 4. Create a `.env` file in the backend directory similar to `.env.example` and enter the required variables:
 
     ```env
-    CONNECTION_STRING="mongodb://localhost:27017/mydb"
-    PORT=5000
-    secret=mysecretkey
+    CONNECTION_STRING = mongodb+srv://layurulakvidukarunathilaka:pC3DuSoTKdwD83fi@cluster0.eyejahe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    PORT = 5000
     API_URL = /api/v1
-    TOKEN_EXPIRE_TIME=xh
+    secret = University-Of-Vavuniya-PerfumePulse-Project
     ```
 
 5. Start the backend server:
